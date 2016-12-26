@@ -15,4 +15,9 @@ public class PageController {
     public String getMainPage(ModelMap modelMap) {
         return "index";
     }
+
+    @GetMapping("/heroes")
+    public String getHeroesPage(ModelMap modelMap) {
+        return "heroes";
+    }
 }

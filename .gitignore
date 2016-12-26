@@ -3,3 +3,5 @@
 .gradle/
 build/
 out/
+/src/main/webapp/resources/node_modules/
+/src/main/webapp/resources/js/

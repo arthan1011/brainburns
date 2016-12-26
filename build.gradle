@@ -28,3 +28,17 @@ compileTypeScript {
     target = 'ES2015'
 
 }
+
+task npmInstall(type: Exec) {
+    workingDir "${webAppDirName}/resources"
+    commandLine 'cmd', '/c', 'npm install'
+}
+
+task tscCompile(type: Exec) {
+    workingDir "${webAppDirName}/resources"
+    commandLine 'cmd', '/c', 'tsc'
+}
+
+processResources.dependsOn {
+    [npmInstall, tscCompile]
+}
