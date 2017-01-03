@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Angular QuickStart</title>
+  <title>BrainBurns</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <spring:url value="/resources/styles.css" var="styleHref" />
@@ -28,6 +28,6 @@
 </head>
 
 <body>
-<my-app>Loading AppComponent content here ...</my-app>
+  <brainburns-app>Loading AppComponent content here ...</brainburns-app>
 </body>
 </html>

@@ -1,0 +1,23 @@
+div.main-layout {
+    padding: 5px;
+}
+
+div.main-header > h1 {
+    margin: 10px 0;
+}
+
+div.main-content {
+    padding: 3px;
+    background: lightgray;
+    float: left;
+    width: 80%;
+}
+
+div.main-right-panel {
+    padding: 3px;
+    background: #969696;
+    margin-left: 80%;
+}
+
+div.main-footer {
+}
