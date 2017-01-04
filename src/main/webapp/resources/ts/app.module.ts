@@ -3,16 +3,34 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule}   from '@angular/forms';
 
 import {AppComponent}  from './app.component';
-import {HeroDetailComponent} from './hero-detail.component';
+import {CardFormComponent} from "./card-form.component";
+import {DashboardComponent} from "./dashboard.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        RouterModule.forRoot([
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent
+            },
+            {
+                path: 'card/new',
+                component: CardFormComponent
+            }
+        ])
     ],
     declarations: [
         AppComponent,
-        HeroDetailComponent
+        CardFormComponent,
+        DashboardComponent
     ],
     bootstrap: [
         AppComponent

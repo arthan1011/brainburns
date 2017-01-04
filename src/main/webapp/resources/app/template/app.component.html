@@ -3,14 +3,12 @@
         <h1>{{title}}</h1>
     </div>
     <div class="main-content">
-        <p>
-            Some Text
-        </p>
+        <router-outlet></router-outlet>
     </div>
     <div class="main-right-panel">
-        <p>
-            Right panel
-        </p>
+        <nav>
+            <a routerLink="/card/new" routerLinkActive="active">New card</a>
+        </nav>
     </div>
     <div class="main-footer">
 
