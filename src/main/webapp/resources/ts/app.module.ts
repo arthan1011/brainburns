@@ -22,7 +22,7 @@ import {RouterModule} from "@angular/router";
                 component: DashboardComponent
             },
             {
-                path: 'card/new',
+                path: 'card-new',
                 component: CardFormComponent
             }
         ])

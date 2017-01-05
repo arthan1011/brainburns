@@ -1,5 +1,6 @@
 package com.brainburns.brainburns.config;
 
+import com.brainburns.brainburns.web.filter.AllRequestsRedirectFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -30,6 +31,6 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
     protected Filter[] getServletFilters() {
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
-        return new Filter[] { characterEncodingFilter};
+        return new Filter[] { characterEncodingFilter, new AllRequestsRedirectFilter()};
     }
 }
