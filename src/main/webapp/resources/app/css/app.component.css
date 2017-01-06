@@ -19,5 +19,6 @@ div.main-right-panel {
     margin-left: 80%;
 }
 
-div.main-footer {
+.main-layout a {
+    text-decoration: none;
 }

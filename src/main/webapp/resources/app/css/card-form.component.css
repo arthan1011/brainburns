@@ -1,0 +1,29 @@
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin: 10px 10px;
+    padding: 10px;
+    background-color: #D3D3D3;
+}
+
+.form-group input {
+    padding: 12px 5px;
+    font-size: 1.2em;
+    border: 1px solid #63829e;
+    background-color: #c8c8c8;
+    border-radius: 3px;
+    text-align: center;
+    min-width: 75%;
+}
+
+.form-group label {
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+    text-transform: uppercase;
+    margin-right: 10px;
+    font-size: 1.4em;
+    color: #1c1741;
+}
