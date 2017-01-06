@@ -14,11 +14,23 @@ div.main-content {
 }
 
 div.main-right-panel {
-    padding: 3px;
+    border-left: 3px solid #747474;
     background: #969696;
     margin-left: 80%;
 }
 
 .main-layout a {
     text-decoration: none;
+}
+
+
+nav .nav-link {
+    padding: 8px 5px;
+    font-size: 1.5em;
+    color: #548b92;
+    background: #c6c6c6;
+}
+nav .nav-link:hover {
+    transition-duration: 400ms;
+    color: antiquewhite;
 }
