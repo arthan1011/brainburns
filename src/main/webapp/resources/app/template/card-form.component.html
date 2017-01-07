@@ -1,19 +1,51 @@
 <div class="card-form">
     <h2>New Card</h2>
-    <form>
+    <form #cardForm="ngForm" autocomplete="off">
         <div class="form-group">
-            <label for="word-writing">Writing</label>
-            <input id="word-writing" type="text">
+            <div class="label-container">
+                <label for="word-writing">Writing</label>
+            </div>
+            <div class="input-container">
+                <input id="word-writing"
+                       autocomplete="off"
+                       type="text"
+                       name="word-writing"
+                       [(ngModel)]="card.writing"
+                       required oninvalid="this.setCustomValidity('')">
+            </div>
         </div>
 
         <div class="form-group">
-            <label for="word-transcription">Transcription</label>
-            <input id="word-transcription" type="text">
+            <div class="label-container">
+                <label for="word-transcription">Transcription</label>
+            </div>
+            <div class="input-container">
+                <input id="word-transcription"
+                       autocomplete="off"
+                       type="text"
+                       name="word-transcription"
+                       [(ngModel)]="card.transcription">
+            </div>
         </div>
 
         <div class="form-group">
-            <label for="word-meaning">Meaning</label>
-            <input id="word-meaning" type="text">
+            <div class="label-container">
+                <label for="word-meaning">Meaning</label>
+            </div>
+            <div class="input-container">
+                <input id="word-meaning"
+                       autocomplete="off"
+                       type="text"
+                       name="word-meaning"
+                       [(ngModel)]="card.meaning" required>
+            </div>
+        </div>
+
+        <div class="form-controls">
+            <button [disabled]="!cardForm.form.valid"
+                    (click)="onNext();">
+                Next
+            </button>
         </div>
     </form>
 </div>

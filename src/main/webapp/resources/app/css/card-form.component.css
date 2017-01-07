@@ -11,14 +11,29 @@ h2 {
 .form-group input {
     padding: 12px 5px;
     font-size: 1.2em;
-    border: 1px solid #63829e;
+    border: 1px solid #7f95a8;
     background-color: #c8c8c8;
     border-radius: 3px;
     text-align: center;
-    min-width: 75%;
+    min-width: 100%;
+}
+.form-group input:focus {
+    border-color: #5f87d7;
+}
+.form-group input[required], .form-group input.ng-valid[required] {
+    min-width: calc(100% - 8px);
+    box-shadow: none;
+    border-left: 5px solid #16b329;
+    border-right: 5px solid #16b329;
+}
+.form-group input.ng-invalid[required] {
+    min-width: calc(100% - 8px);
+    box-shadow: none;
+    border-left: 5px solid #ff411c;
+    border-right: 5px solid #ff411c;
 }
 
-.form-group label {
+.form-group .label-container {
     display: inline-block;
     width: 20%;
     text-align: right;
@@ -26,4 +41,27 @@ h2 {
     margin-right: 10px;
     font-size: 1.4em;
     color: #1c1741;
+}
+.form-group .input-container {
+    display: inline-block;
+    width: 75%;
+}
+
+.form-controls {
+    text-align: end;
+    width: 96%;
+}
+.form-controls button[disabled] {
+    cursor: not-allowed;
+    color: #A47373;
+    background-color: #b3b3b3;
+}
+.form-controls button {
+    padding: 5px 16px;
+    font-size: 1.4em;
+    border-radius: 2px;
+    border: none;
+    background-color: #606060;
+    color: #D2CFCF;
+    cursor: pointer;
 }

@@ -3,6 +3,7 @@
  */
 
 import {Component} from '@angular/core';
+import {Card} from "./model/Card";
 
 @Component({
     selector: "bb-card-form",
@@ -11,5 +12,9 @@ import {Component} from '@angular/core';
     templateUrl: "../template/card-form.component.html"
 })
 export class CardFormComponent {
+    card: Card = new Card();
 
+    public onNext(): void {
+        this.card = new Card();
+    }
 }
