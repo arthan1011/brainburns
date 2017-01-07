@@ -4,6 +4,7 @@
 <html>
 <head>
   <title>BrainBurns</title>
+  <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <spring:url value="/resources/styles.css" var="styleHref" />
@@ -25,7 +26,6 @@
   <script>
     System.import('app').catch(function(err){ console.error(err); });
   </script>
-  <base href="/">
 </head>
 
 <body>

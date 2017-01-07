@@ -17,7 +17,7 @@ const appRoutes: Routes = [
         component: DashboardComponent
     },
     {
-        path: 'card-new',
+        path: 'card/new',
         component: CardFormComponent
     }
 ];
