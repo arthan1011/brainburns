@@ -4,6 +4,7 @@
 <html>
 <head>
   <title>BrainBurns</title>
+  <%--Looks like base tag should be before scripts for proper routing--%>
   <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

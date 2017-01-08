@@ -1,6 +1,6 @@
 <div class="card-form">
     <h2>New Card</h2>
-    <form #cardForm="ngForm" autocomplete="off">
+    <form #cardForm="ngForm" novalidate autocomplete="off">
         <div class="form-group">
             <div class="label-container">
                 <label for="word-writing">Writing</label>
@@ -11,7 +11,7 @@
                        type="text"
                        name="word-writing"
                        [(ngModel)]="card.writing"
-                       required oninvalid="this.setCustomValidity('')">
+                       required>
             </div>
         </div>
 
