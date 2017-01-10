@@ -1,8 +1,13 @@
 plugins {
+    id "com.moowork.node" version "1.0.1"
     id "de.richsource.gradle.plugins.typescript" version "1.8.0"
     id 'java'
     id 'war'
 }
+
+import com.brainburns.build.MyCompileTypeScript
+import com.moowork.gradle.node.NodeExtension
+import com.moowork.gradle.node.variant.VariantBuilder
 
 group 'com.brainburns'
 version '0.1'
@@ -28,12 +33,41 @@ compileTypeScript {
     source = file("${webAppDirName}/resources/script/ts")
     outputDir = file("${webAppDirName}/resources/script/js")
     target = 'ES2015'
-
 }
 
-task npmInstall(type: Exec) {
-    workingDir "${webAppDirName}/resources"
-    commandLine 'cmd', '/c', 'npm install'
+task my_npm_install(type: NpmTask) {
+    args = ['install']
+    execOverrides {
+        it.workingDir = file("${webAppDirName}/resources")
+    }
+}
+
+node {
+    download = true
+    workDir = file("${project.buildDir}/nodejs")
+//    nodeModulesDir = file("${webAppDirName}/resources/node_modules")
+}
+
+String nodeExecutable() {
+    NodeExtension nodeExt = NodeExtension.get(project)
+    return new VariantBuilder(nodeExt).build().nodeExec
+}
+
+task myCompileTypeScript(type: MyCompileTypeScript) {
+    source = file("${webAppDirName}/resources/ts")
+    include '**/*.ts'
+//    exclude '**/node_modules/**/*.ts'
+    target 'es2015'
+    module 'commonjs'
+    moduleResolution 'node'
+    sourcemap true
+    noImplicitAny true
+    emitDecoratorMetadata true
+    experimentalDecorators true
+    outputDir = file("${webAppDirName}/resources/app/js")
+    compilerExecutable "${nodeExecutable()} node_modules/typescript/lib/tsc.js"
+    workingDirectory file("${webAppDirName}/resources")
+    dependsOn "my_npm_install"
 }
 
 task tscCompile(type: Exec) {
@@ -42,5 +76,5 @@ task tscCompile(type: Exec) {
 }
 
 processResources.dependsOn {
-    [npmInstall, tscCompile]
+    [my_npm_install, myCompileTypeScript]
 }
