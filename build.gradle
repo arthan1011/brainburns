@@ -25,10 +25,15 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    webappRunner
+}
+
 dependencies {
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.5.RELEASE'
     compile 'ch.qos.logback:logback-classic:1.1.3'
     compile 'javax.servlet:jstl:1.2'
+    webappRunner group: 'com.github.jsimone', name: 'webapp-runner', version: '8.5.9.0'
     compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
@@ -81,8 +86,17 @@ task tscCompile(type: Exec) {
 }
 
 // for heroku
+task copyToLib(type: Copy) {
+    into "$buildDir/server"
+    from(configurations.webappRunner) {
+        include "webapp-runner*"
+        rename 'webapp-runner.*','webapp-runner.jar'
+    }
+}
 task stage(dependsOn: ['war', 'clean'])
+stage.dependsOn(copyToLib)
 war.mustRunAfter clean
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.1' //we want gradle 2.10 to run this project

@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/brainburns-0.1.war
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/server/webapp-runner.jar build/libs/brainburns-0.1.war
