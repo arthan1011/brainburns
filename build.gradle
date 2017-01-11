@@ -12,6 +12,11 @@ import com.moowork.gradle.node.variant.VariantBuilder
 group 'com.brainburns'
 version '0.1'
 
+war {
+    manifest {
+        attributes('Version': rootProject.version)
+    }
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -73,6 +78,14 @@ task myCompileTypeScript(type: MyCompileTypeScript) {
 task tscCompile(type: Exec) {
     workingDir "${webAppDirName}/resources"
     commandLine 'cmd', '/c', 'tsc'
+}
+
+// for heroku
+task stage(dependsOn: ['war', 'clean'])
+war.mustRunAfter clean
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1' //we want gradle 2.10 to run this project
 }
 
 processResources.dependsOn {
