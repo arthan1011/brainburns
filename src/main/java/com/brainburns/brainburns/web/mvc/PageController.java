@@ -20,4 +20,14 @@ public class PageController {
     public String getHeroesPage(ModelMap modelMap) {
         return "heroes";
     }
+
+    @GetMapping("/signin")
+    public String getSignInPage(ModelMap modelMap) {
+        return "login";
+    }
+
+    @GetMapping("/signup")
+    public String getSignUpPage(ModelMap modelMap) {
+        return "signup";
+    }
 }

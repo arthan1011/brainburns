@@ -19,13 +19,17 @@ public class AllRequestsRedirectFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        String contextPath = ((HttpServletRequest) request).getServletPath();
+        /*String contextPath = ((HttpServletRequest) request).getServletPath();
         boolean isResourceUrl = contextPath.contains(".js") || contextPath.contains(".css") || contextPath.contains(".html");
-        if (!isResourceUrl) {
+        boolean isLoginUrl = contextPath.equals("/login");
+        if (isLoginUrl) {
+            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+        }
+        if (!isResourceUrl && !isLoginUrl) {
             request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
         } else {
             chain.doFilter(request, response);
-        }
+        }*/
     }
 
     @Override
