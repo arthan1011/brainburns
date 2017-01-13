@@ -22,3 +22,57 @@ div {
 a {
     outline: 0;
 }
+
+div.login-layout {
+    width: 400px;
+    margin-left: calc(50% - 200px);
+    background: lightgray;
+    padding: 5px;
+    margin-top: 200px;
+    box-shadow: 2px 2px 3px 2px #125e77;
+    border: 1px solid #0f7595;
+}
+
+.login-layout h1 {
+    margin: 10px 0px;
+    text-align: center;
+    color: darkblue;
+}
+.login-layout h2 {
+    text-align: center;
+    color: red;
+}
+
+.login-layout fieldset {
+    border: none;
+}
+.login-layout fieldset#actions {
+    text-align: right;
+}
+
+
+.login-layout div.form-group {
+    margin: 8px 0px;
+    text-align: center;
+}
+
+.login-layout div.form-group input {
+    font-size: 1.2em;
+    border: 1px solid gray;
+    box-shadow: none;
+    border-radius: 6px;
+    padding: 10px 10px;
+    width: 93%;
+    margin: 0;
+}
+
+.login-layout button {
+    padding: 6px 9px;
+    margin-left: 6px;
+    font-size: 1.3em;
+    border-radius: 2px;
+    border: none;
+    background-color: #606060;
+    color: #D2CFCF;
+    cursor: pointer;
+}

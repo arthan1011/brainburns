@@ -28,12 +28,18 @@
     </c:if>
     <form action="${signInUrl}" method="POST">
         <fieldset>
-            <input id="username" name="username" type="text" placeholder="Username" autofocus required>
-            <input id="password" name="password" type="password" placeholder="Password" required>
+            <div class="form-group">
+                <input id="username" name="username" type="text" placeholder="Username" autofocus required>
+            </div>
+            <div class="form-group">
+                <input id="password" name="password" type="password" placeholder="Password" required>
+            </div>
         </fieldset>
-        <fieldset>
-            <input type="submit" name="submit" id="submit" value="Sign In">
-            <a href="${signUpUrl}">Register</a>
+        <fieldset id="actions">
+            <button type="submit" name="submit" id="submit" value="Sign In">Sign In</button>
+            <a href="${signUpUrl}">
+                <button type="button">Sign Up</button>
+            </a>
         </fieldset>
     </form>
 </div>
