@@ -1,8 +1,11 @@
 package com.brainburns.brainburns.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -20,10 +23,18 @@ import java.text.MessageFormat;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource("classpath:/application.properties")
 @ComponentScan(basePackages = "com.brainburns.brainburns")
 public class RootConfig {
 
     private DataSource dataSource;
+
+    private final Environment env;
+
+    @Autowired
+    public RootConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource dataSource() throws URISyntaxException {
@@ -43,9 +54,9 @@ public class RootConfig {
                 password = dbUri.getUserInfo().split(":")[1];
                 url = MessageFormat.format(dbUrlTemplate, dbUri.getHost(), dbUri.getPort(), dbUri, dbUri.getPath());
             } else {
-                username = "postgres";
-                password = "postgres";
-                url = "jdbc:postgresql://localhost:5432/brainburns_local";
+                username = env.getProperty("db.username");
+                password = env.getProperty("db.password");
+                url = env.getProperty("db.url");
             }
 
             dataSource.setUrl(url);
