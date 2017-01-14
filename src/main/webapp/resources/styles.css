@@ -23,6 +23,7 @@ a {
     outline: 0;
 }
 
+/*///////////////===================_Login_and_SignUp_=========================//////////////*/
 div.login-layout {
     width: 400px;
     margin-left: calc(50% - 200px);
@@ -76,4 +77,12 @@ div.login-layout {
     background-color: #606060;
     color: #D2CFCF;
     cursor: pointer;
+}
+
+/*///////////////===================_Input_Placeholder_=========================//////////////*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: gray;
 }

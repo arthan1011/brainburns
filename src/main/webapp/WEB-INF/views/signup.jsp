@@ -11,9 +11,8 @@
           content="width=device-width, initial-scale=1">
     <spring:url value="/resources/styles.css"
                 var="styleHref"/>
-    <spring:url var="signInUrl" value="/signin" />
-    <spring:url var="signUpPageUrl"
-                value="/signup"/>
+    <spring:url var="signUpUrl" value="/user/signup"/>
+    <spring:url var="signInPageUrl" value="signin"/>
     <link rel="stylesheet"
           href="${styleHref}">
     <style>
@@ -23,11 +22,14 @@
 
 <body>
 <div class="login-layout">
-    <h1>Sign In</h1>
-    <c:if test="${param.error != null}">
-        <h2>Incorrect Username or Password</h2>
+    <h1>Sign Up</h1>
+    <c:if test="${param.exists != null}">
+        <h2>User with this name already exists</h2>
     </c:if>
-    <form action="${signInUrl}" method="POST">
+    <c:if test="${param.passwordNotRepeated != null}">
+        <h2>You should repeat password!</h2>
+    </c:if>
+    <form action="${signUpUrl}" method="POST">
         <fieldset>
             <div class="form-group">
                 <input id="username" name="username" type="text" placeholder="Username" autofocus required>
@@ -35,12 +37,15 @@
             <div class="form-group">
                 <input id="password" name="password" type="password" placeholder="Password" required>
             </div>
+            <div class="form-group">
+                <input id="repeatedPassword" name="repeatedPassword" type="password" placeholder="Repeat password" required>
+            </div>
         </fieldset>
         <fieldset id="actions">
-            <button type="submit" name="submit" id="submit" value="Sign In">Submit</button>
-            <a href="${signUpPageUrl}">
+            <a href="${signInPageUrl}">
                 <button type="button">Sign Up</button>
             </a>
+            <button type="submit" name="submit" id="submit" value="Sign In">Submit</button>
         </fieldset>
     </form>
 </div>
