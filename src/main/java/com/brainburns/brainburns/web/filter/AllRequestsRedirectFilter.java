@@ -23,7 +23,7 @@ public class AllRequestsRedirectFilter implements Filter {
         boolean isResourceUrl = contextPath.contains(".js") || contextPath.contains(".css") || contextPath.contains(".html");
         boolean isLoginUrl = contextPath.equals("/login");
         if (isLoginUrl) {
-            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/signin.jsp").forward(request, response);
         }
         if (!isResourceUrl && !isLoginUrl) {
             request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);

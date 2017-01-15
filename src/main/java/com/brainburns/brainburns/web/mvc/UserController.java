@@ -1,5 +1,6 @@
-package com.brainburns.brainburns.web.rest;
+package com.brainburns.brainburns.web.mvc;
 
+import com.brainburns.brainburns.domain.model.User;
 import com.brainburns.brainburns.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by Arthan on 24.12.2016. Project: brainburns
@@ -34,7 +36,13 @@ public class UserController {
             return "redirect:/signup";
         }
 
-        modelMap.put("exists", true);
-        return "redirect:/signup";
+        if (userService.findByUsername(username).isPresent()) {
+            modelMap.put("exists", true);
+            return "redirect:/signup";
+        } else {
+            userService.createUser(new User(username, password));
+            modelMap.put("userCreated", true);
+            return "redirect:/signin";
+        }
     }
 }

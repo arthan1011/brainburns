@@ -16,14 +16,9 @@ public class PageController {
         return "index";
     }
 
-    @GetMapping("/heroes")
-    public String getHeroesPage(ModelMap modelMap) {
-        return "heroes";
-    }
-
     @GetMapping("/signin")
     public String getSignInPage(ModelMap modelMap) {
-        return "login";
+        return "signin";
     }
 
     @GetMapping("/signup")

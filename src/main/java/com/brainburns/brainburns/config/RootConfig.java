@@ -1,5 +1,8 @@
 package com.brainburns.brainburns.config;
 
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,6 +27,7 @@ import java.text.MessageFormat;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:/application.properties")
+@MapperScan(basePackages = "com.brainburns.brainburns.domain.mapper")
 @ComponentScan(basePackages = "com.brainburns.brainburns")
 public class RootConfig {
 
@@ -72,5 +76,18 @@ public class RootConfig {
     @Bean
     public PlatformTransactionManager transactionManager() throws URISyntaxException {
         return new DataSourceTransactionManager(dataSource());
+    }
+
+    @Bean
+    public SqlSessionFactoryBean sqlSessionFactoryBean() throws URISyntaxException {
+        SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setTypeAliasesPackage("com.brainburns.brainburns.domain.model");
+        return sessionFactoryBean;
+    }
+
+    @Bean
+    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+        return new SqlSessionTemplate(sqlSessionFactoryBean().getObject());
     }
 }

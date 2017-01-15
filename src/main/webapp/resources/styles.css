@@ -44,6 +44,10 @@ div.login-layout {
     color: red;
     margin-bottom: 0;
 }
+.login-layout h3 {
+    margin-left:15px;
+    margin-bottom: 0;
+}
 
 .login-layout fieldset {
     border: none;

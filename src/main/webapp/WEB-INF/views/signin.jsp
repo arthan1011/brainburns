@@ -27,6 +27,9 @@
     <c:if test="${param.error != null}">
         <h2>Incorrect Username or Password</h2>
     </c:if>
+    <c:if test="${param.userCreated != null}">
+        <h3>You created a new user</h3>
+    </c:if>
     <form action="${signInUrl}" method="POST">
         <fieldset>
             <div class="form-group">
