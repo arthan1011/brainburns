@@ -56,7 +56,12 @@ public class RootConfig {
                 URI dbUri = new URI(databaseUrl);
                 username = dbUri.getUserInfo().split(":")[0];
                 password = dbUri.getUserInfo().split(":")[1];
-                url = MessageFormat.format(dbUrlTemplate, dbUri.getHost(), dbUri.getPort(), dbUri, dbUri.getPath());
+                url = MessageFormat.format(
+                        dbUrlTemplate,
+                        dbUri.getHost(),
+                        Integer.toString(dbUri.getPort()),
+                        dbUri.getPath()
+                );
             } else {
                 username = env.getProperty("db.username");
                 password = env.getProperty("db.password");
