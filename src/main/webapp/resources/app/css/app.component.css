@@ -14,9 +14,8 @@ div.main-content {
 }
 
 div.main-right-panel {
-    border-left: 3px solid #747474;
     background: #969696;
-    margin-left: 80%;
+    margin-left: calc(80% + 3px);
 }
 
 .main-layout a {
@@ -29,6 +28,7 @@ nav .nav-link {
     font-size: 1.5em;
     color: #155ca2;
     background: #c6c6c6;
+    border-bottom: 2px solid #969696;
 }
 nav .nav-link:hover {
     transition-duration: 400ms;

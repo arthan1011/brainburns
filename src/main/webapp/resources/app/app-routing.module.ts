@@ -5,6 +5,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {CardFormComponent} from "./card-form.component";
 import {DashboardComponent} from "./dashboard.component";
+import {DesksComponent} from "./desks.component";
 
 const appRoutes: Routes = [
     {
@@ -19,6 +20,10 @@ const appRoutes: Routes = [
     {
         path: 'card/new',
         component: CardFormComponent
+    },
+    {
+        path: 'desks',
+        component: DesksComponent
     }
 ];
 
