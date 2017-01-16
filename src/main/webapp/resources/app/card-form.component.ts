@@ -8,8 +8,8 @@ import {Card} from "./model/Card";
 @Component({
     selector: "bb-card-form",
     moduleId: module.id,
-    styleUrls: ["../css/card-form.component.css"],
-    templateUrl: "../template/card-form.component.html"
+    styleUrls: ["css/card-form.component.css"],
+    templateUrl: "template/card-form.component.html"
 })
 export class CardFormComponent {
     card: Card = new Card();

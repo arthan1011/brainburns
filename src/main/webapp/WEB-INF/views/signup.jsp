@@ -43,7 +43,7 @@
         </fieldset>
         <fieldset id="actions">
             <a href="${signInPageUrl}">
-                <button type="button">Sign Up</button>
+                <button type="button">Sign In</button>
             </a>
             <button type="submit" name="submit" id="submit" value="Sign In">Submit</button>
         </fieldset>

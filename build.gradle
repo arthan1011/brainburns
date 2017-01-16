@@ -48,12 +48,6 @@ dependencies {
     compile 'log4j:log4j:1.2.17'
 }
 
-compileTypeScript {
-    source = file("${webAppDirName}/resources/script/ts")
-    outputDir = file("${webAppDirName}/resources/script/js")
-    target = 'ES2015'
-}
-
 task my_npm_install(type: NpmTask) {
     args = ['install']
     execOverrides {
@@ -73,7 +67,7 @@ String nodeExecutable() {
 }
 
 task myCompileTypeScript(type: MyCompileTypeScript) {
-    source = file("${webAppDirName}/resources/ts")
+    source = file("${webAppDirName}/resources/app")
     include '**/*.ts'
 //    exclude '**/node_modules/**/*.ts'
     target 'es2015'
@@ -83,7 +77,7 @@ task myCompileTypeScript(type: MyCompileTypeScript) {
     noImplicitAny true
     emitDecoratorMetadata true
     experimentalDecorators true
-    outputDir = file("${webAppDirName}/resources/app/js")
+    outputDir = file("${webAppDirName}/resources/app")
     compilerExecutable "${nodeExecutable()} node_modules/typescript/lib/tsc.js"
     workingDirectory file("${webAppDirName}/resources")
     dependsOn "my_npm_install"
