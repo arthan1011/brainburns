@@ -1,7 +1,7 @@
 {
   "version": "2.1.4",
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "outDir": "app/",
     "module": "commonjs",
     "moduleResolution": "node",
