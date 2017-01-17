@@ -22,7 +22,6 @@
 
 <body>
 <div class="login-layout">
-    <h1>Sign Up</h1>
     <c:if test="${param.exists != null}">
         <h2>User with this name already exists</h2>
     </c:if>
@@ -42,10 +41,13 @@
             </div>
         </fieldset>
         <fieldset id="actions">
-            <a href="${signInPageUrl}">
-                <button type="button">Sign In</button>
-            </a>
-            <button type="submit" name="submit" id="submit" value="Sign In">Submit</button>
+            <button type="submit" name="submit" id="submit" value="Sign In">Sign Up</button>
+            <div>
+                Already have an account?
+                <a href="${signInPageUrl}">
+                    Login here
+                </a>
+            </div>
         </fieldset>
     </form>
 </div>

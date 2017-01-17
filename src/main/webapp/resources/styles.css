@@ -1,6 +1,7 @@
 body {
-    background-color: #0f7595;
+    background-color: #404040;
     font-family: Arial, Helvetica, sans-serif;
+    color: #999999
 }
 
 h1 {
@@ -27,10 +28,9 @@ a {
 div.login-layout {
     width: 400px;
     margin-left: calc(50% - 200px);
-    background: lightgray;
-    padding: 5px;
+    background: #404040;
+    padding: 11px 8px;
     margin-top: 200px;
-    box-shadow: 2px 2px 3px 2px #125e77;
     border: 1px solid #0f7595;
 }
 
@@ -64,23 +64,31 @@ div.login-layout {
 
 .login-layout div.form-group input {
     font-size: 1.2em;
-    border: 1px solid gray;
-    box-shadow: none;
+    border: none;
+    box-shadow: inset 0 0 10px #232323;
     border-radius: 6px;
     padding: 10px 10px;
     width: 93%;
     margin: 0;
+    background: #1E2F2C;
+    color: #999999;
 }
 
 .login-layout button {
     padding: 6px 9px;
-    margin-left: 6px;
     font-size: 1.3em;
     border-radius: 2px;
-    border: none;
-    background-color: #606060;
-    color: #D2CFCF;
+    border: 1px solid #ACACAC;
+    background-color: #7C726B;
+    color: #422C1E;
+    margin-bottom: 10px;
     cursor: pointer;
+    min-width: calc(100% - 3px);
+}
+
+fieldset#actions a {
+    color: #00a1d2;
+    text-decoration: none;
 }
 
 /*///////////////===================_Input_Placeholder_=========================//////////////*/

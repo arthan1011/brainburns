@@ -23,13 +23,6 @@
 
 <body>
 <div class="login-layout">
-    <h1>Sign In</h1>
-    <c:if test="${param.error != null}">
-        <h2>Incorrect Username or Password</h2>
-    </c:if>
-    <c:if test="${param.userCreated != null}">
-        <h3>You created a new user</h3>
-    </c:if>
     <form action="${signInUrl}" method="POST">
         <fieldset>
             <div class="form-group">
@@ -39,11 +32,19 @@
                 <input id="password" name="password" type="password" placeholder="Password" required>
             </div>
         </fieldset>
+
+        <c:if test="${param.error != null}">
+            <h2>Incorrect Username or Password</h2>
+        </c:if>
+        <c:if test="${param.userCreated != null}">
+            <h3>You created a new user</h3>
+        </c:if>
+
         <fieldset id="actions">
-            <button type="submit" name="submit" id="submit" value="Sign In">Submit</button>
-            <a href="${signUpPageUrl}">
-                <button type="button">Sign Up</button>
-            </a>
+            <button type="submit" name="submit" id="submit" value="Sign In">Login</button>
+            <div>
+                <a href="${signUpPageUrl}">Create new account</a>
+            </div>
         </fieldset>
     </form>
 </div>
