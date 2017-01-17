@@ -5,23 +5,19 @@ import {AppComponent} from "./app.component";
 import {CardFormComponent} from "./card-form.component";
 import {DashboardComponent} from "./dashboard.component";
 import {AppRoutingModule} from "./app-routing.module";
-import {DesksComponent} from "./desks.component";
-import {DeskDetailComponent} from "./desk-detail.component";
-import {DeskListComponent} from "./desk-list.component";
+import {DesksModule} from "./desks/desks.module";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        DesksModule
     ],
     declarations: [
         AppComponent,
         CardFormComponent,
-        DashboardComponent,
-        DesksComponent,
-        DeskDetailComponent,
-        DeskListComponent
+        DashboardComponent
     ],
     bootstrap: [
         AppComponent

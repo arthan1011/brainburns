@@ -5,7 +5,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {CardFormComponent} from "./card-form.component";
 import {DashboardComponent} from "./dashboard.component";
-import {DesksComponent} from "./desks.component";
+import {DesksComponent} from "./desks/desks.component";
 
 const appRoutes: Routes = [
     {
