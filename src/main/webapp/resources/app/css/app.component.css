@@ -7,6 +7,9 @@ div.main-header > h1 {
 }
 div.main-header {
     background: #404040;
+    border: 1px solid #0f6580;
+    margin-bottom: 15px;
+    padding-left: 30px;
 }
 
 div.main-content {
@@ -14,11 +17,13 @@ div.main-content {
     background: #404040;
     float: left;
     width: 80%;
+    border: 1px solid #0f6580;
 }
 
 div.main-right-panel {
     background: #404040;
-    margin-left: calc(80% + 3px);
+    margin-left: calc(80% + 15px);
+    border: 1px solid #0f6580;
 }
 
 .main-layout a {
