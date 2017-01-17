@@ -40,6 +40,10 @@ button {
     cursor: pointer;
 }
 
+button.add-btn {
+    background-color: #9A9F79;
+}
+
 /*///////////////===================_Login_and_SignUp_=========================//////////////*/
 div.login-layout {
     width: 400px;

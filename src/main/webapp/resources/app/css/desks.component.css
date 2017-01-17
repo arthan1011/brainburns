@@ -1,0 +1,9 @@
+div.desk-list {
+    width: 20%;
+    float: left;
+    margin: 5px;
+}
+
+div.desk-detial {
+    margin-left: calc(20% + 5px);
+}
