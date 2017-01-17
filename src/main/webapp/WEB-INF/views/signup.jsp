@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<body>
+<body class="login">
 <div class="login-layout">
     <c:if test="${param.exists != null}">
         <h2>User with this name already exists</h2>

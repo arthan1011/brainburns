@@ -5,16 +5,19 @@ div.main-layout {
 div.main-header > h1 {
     margin: 10px 0;
 }
+div.main-header {
+    background: #404040;
+}
 
 div.main-content {
     padding: 3px;
-    background: lightgray;
+    background: #404040;
     float: left;
     width: 80%;
 }
 
 div.main-right-panel {
-    background: #969696;
+    background: #404040;
     margin-left: calc(80% + 3px);
 }
 
@@ -26,9 +29,9 @@ div.main-right-panel {
 nav .nav-link {
     padding: 8px 5px;
     font-size: 1.5em;
-    color: #155ca2;
-    background: #c6c6c6;
-    border-bottom: 2px solid #969696;
+    color: #422C1E;
+    background: #7C726B;
+    border-bottom: 2px solid #404040;
 }
 nav .nav-link:hover {
     transition-duration: 400ms;

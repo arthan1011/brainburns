@@ -1,4 +1,9 @@
 body {
+    background-color: #1E2F2C;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #D3D3D3
+}
+body.login-layout {
     background-color: #404040;
     font-family: Arial, Helvetica, sans-serif;
     color: #999999
@@ -22,6 +27,17 @@ div {
 
 a {
     outline: 0;
+}
+
+button {
+    padding: 6px 9px;
+    font-size: 1.3em;
+    border-radius: 2px;
+    border: 1px solid #ACACAC;
+    background-color: #7C726B;
+    color: #422C1E;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 /*///////////////===================_Login_and_SignUp_=========================//////////////*/
@@ -75,14 +91,6 @@ div.login-layout {
 }
 
 .login-layout button {
-    padding: 6px 9px;
-    font-size: 1.3em;
-    border-radius: 2px;
-    border: 1px solid #ACACAC;
-    background-color: #7C726B;
-    color: #422C1E;
-    margin-bottom: 10px;
-    cursor: pointer;
     min-width: calc(100% - 3px);
 }
 

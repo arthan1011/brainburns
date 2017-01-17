@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body>
+<body class="login">
 <div class="login-layout">
     <form action="${signInUrl}" method="POST">
         <fieldset>
