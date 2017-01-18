@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: "bb-dashboard",
     moduleId: module.id,
-    templateUrl: "template/dashboard.component.html"
+    templateUrl: "html/dashboard.component.html"
 })
 export class DashboardComponent {
 

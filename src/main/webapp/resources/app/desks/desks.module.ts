@@ -9,6 +9,7 @@ import {DesksComponent} from "./desks.component";
 import {DeskDetailComponent} from "./desk-detail.component";
 import {DeskListComponent} from "./desk-list.component";
 import {DesksRoutingModule} from "./desks-routing.module";
+import {DeskService} from "./desk.service";
 
 @NgModule({
     imports: [
@@ -20,6 +21,9 @@ import {DesksRoutingModule} from "./desks-routing.module";
         DesksComponent,
         DeskDetailComponent,
         DeskListComponent
+    ],
+    providers: [
+        DeskService
     ]
 })
 export class DesksModule {

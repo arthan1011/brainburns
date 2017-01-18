@@ -28,6 +28,9 @@ div {
 a {
     outline: 0;
 }
+button::-moz-focus-inner {
+    border: none;
+}
 
 button {
     padding: 6px 9px;

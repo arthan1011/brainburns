@@ -7,22 +7,22 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Desk} from "./model/Desk";
 
 import 'rxjs/add/operator/switchMap';
+import {DeskService} from "./desk.service";
 
 @Component({
     selector: "bb-desk-detail",
     moduleId: module.id,
-    templateUrl: "template/desk-detail.component.html"
+    templateUrl: "html/desk-detail.component.html"
 })
 export class DeskDetailComponent implements OnInit {
 
     desk: Desk = new Desk(1, "English");
-    private desks: Desk[] = [
-        new Desk(1, "English"),
-        new Desk(2, "Kanji"),
-        new Desk(3, "Word")
-    ];
+    private desks: Desk[] = this.deskService.getDesks();
 
-    constructor(private route: ActivatedRoute) {};
+    constructor(
+        private deskService: DeskService,
+        private route: ActivatedRoute
+    ) {};
 
     ngOnInit() {
         this.route.params
@@ -36,8 +36,6 @@ export class DeskDetailComponent implements OnInit {
     }
 
     private findDesk(deskId: number): Promise<Desk> {
-        console.log(`Searching for desk with id ${deskId}`);
-        let desk = this.desks.filter(desk => desk.id === deskId)[0];
-        return Promise.resolve(desk);
+        return this.deskService.getDesk(deskId);
     }
 }
