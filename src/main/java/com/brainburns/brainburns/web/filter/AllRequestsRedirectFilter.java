@@ -22,7 +22,8 @@ public class AllRequestsRedirectFilter implements Filter {
         String contextPath = ((HttpServletRequest) request).getServletPath();
         boolean isResourceUrl = contextPath.contains(".js") || contextPath.contains(".css") || contextPath.contains(".html");
         boolean isLoginUrl = contextPath.equals("/signin") || contextPath.equals("/signup");
-        if (isResourceUrl || isLoginUrl) {
+        boolean isApiUrl = contextPath.startsWith("/api/");
+        if (isResourceUrl || isLoginUrl || isApiUrl) {
             chain.doFilter(request, response);
         } else {
             request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);

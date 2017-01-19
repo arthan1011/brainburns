@@ -25,7 +25,8 @@ public class DeskController {
         List<Desk> deskList = new ArrayList<>();
         deskList.add(new Desk(1, "English"));
         deskList.add(new Desk(2, "Kanji"));
-        deskList.add(new Desk(3, "Word"));
+        deskList.add(new Desk(3, "World"));
+        deskList.add(new Desk(4, "German"));
 
         Map<String, List<Desk>> result = new HashMap<>();
         result.put("data", deskList);

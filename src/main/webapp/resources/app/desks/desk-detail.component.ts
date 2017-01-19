@@ -17,7 +17,6 @@ import {DeskService} from "./desk.service";
 export class DeskDetailComponent implements OnInit {
 
     desk: Desk = new Desk(1, "English");
-    private desks: Desk[] = this.deskService.getDesks();
 
     constructor(
         private deskService: DeskService,

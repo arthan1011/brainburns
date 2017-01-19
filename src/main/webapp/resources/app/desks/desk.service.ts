@@ -4,22 +4,26 @@
 
 import {Injectable} from "@angular/core";
 import {Desk} from "./model/Desk";
+import {Http, Response} from "@angular/http";
 
-const DESKS = [
-    new Desk(1, "English"),
-    new Desk(2, "Kanji"),
-    new Desk(3, "Word")
-];
-let desksPromise = Promise.resolve(DESKS);
+import 'rxjs/add/operator/toPromise';
+
+const URL_DESKS = "/api/desk";
 
 @Injectable()
 export class DeskService {
-    getDesks(): Desk[] {
-        return DESKS;
+
+    constructor(private http: Http) {}
+
+    getDesks(): Promise<Desk[]> {
+        return this.http.get(URL_DESKS)
+            .toPromise()
+            .then((res:Response) => res.json().data)
+            .catch(error => console.log(error));
     }
 
     getDesk(id: number) {
-        return desksPromise
+        return this.getDesks()
             .then(desks => desks.find(desk => desk.id === id));
     }
 }

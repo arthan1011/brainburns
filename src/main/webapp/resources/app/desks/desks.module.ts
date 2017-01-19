@@ -10,10 +10,12 @@ import {DeskDetailComponent} from "./desk-detail.component";
 import {DeskListComponent} from "./desk-list.component";
 import {DesksRoutingModule} from "./desks-routing.module";
 import {DeskService} from "./desk.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
     imports: [
         CommonModule,
+        HttpModule,
         FormsModule,
         DesksRoutingModule
     ],

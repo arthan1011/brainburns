@@ -2,7 +2,7 @@
  * Created by arthan on 17.01.2017.
  */
 
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Desk} from "./model/Desk";
 import {Router} from "@angular/router";
 import {DeskService} from "./desk.service";
@@ -13,14 +13,19 @@ import {DeskService} from "./desk.service";
     templateUrl: "html/desk-list.component.html",
     styleUrls: ["css/desk-list.component.css"]
 })
-export class DeskListComponent {
+export class DeskListComponent implements OnInit {
 
     constructor(
         private deskService: DeskService,
         private router: Router
     ) {};
 
-    public desks: Desk[] = this.deskService.getDesks();
+    ngOnInit() {
+        this.deskService.getDesks()
+            .then(desks => this.desks = desks);
+    }
+
+    public desks: Desk[];
 
     selectDesk(desk: Desk): void {
         console.log(`Navigating to desk ${desk.id}`);
