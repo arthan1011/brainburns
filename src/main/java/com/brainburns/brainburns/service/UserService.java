@@ -36,4 +36,8 @@ public class UserService {
         userMapper.createUser(user);
         authorityMapper.createUserAuthority(user);
     }
+
+    public String getHello() {
+        return "Hello!";
+    }
 }

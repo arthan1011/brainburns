@@ -5,14 +5,15 @@ package com.brainburns.brainburns.domain.model;
  */
 public class Desk {
     private long id;
-    private String name;
+    private String username;
+    private String title;
 
     public Desk() {
     }
 
-    public Desk(long id, String name) {
+    public Desk(long id, String title) {
         this.id = id;
-        this.name = name;
+        this.title = title;
     }
 
     public long getId() {
@@ -23,11 +24,19 @@ public class Desk {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
