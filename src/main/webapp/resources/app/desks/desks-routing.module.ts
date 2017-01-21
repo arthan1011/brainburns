@@ -6,6 +6,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {DeskDetailComponent} from "./desk-detail.component";
 import {DesksComponent} from "./desks.component";
+import {DeskNewFormComponent} from "./desk-new-form.component";
 
 const appRoutes = [
     {
@@ -13,9 +14,14 @@ const appRoutes = [
         component: DesksComponent,
         children: [
             {
+                path: "new",
+                component: DeskNewFormComponent
+            },
+            {
                 path: ":id",
                 component: DeskDetailComponent
             }
+
         ]
     },
 

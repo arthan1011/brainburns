@@ -11,6 +11,7 @@ import {DeskListComponent} from "./desk-list.component";
 import {DesksRoutingModule} from "./desks-routing.module";
 import {DeskService} from "./desk.service";
 import {HttpModule} from "@angular/http";
+import {DeskNewFormComponent} from "./desk-new-form.component";
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {HttpModule} from "@angular/http";
     declarations: [
         DesksComponent,
         DeskDetailComponent,
-        DeskListComponent
+        DeskListComponent,
+        DeskNewFormComponent
     ],
     providers: [
         DeskService

@@ -5,9 +5,9 @@
 export class Desk {
 
     constructor(
-        public id: number,
-        public username: string,
-        public title: string
+        public id?: number,
+        public username?: string,
+        public title?: string
     ) {}
 
 }

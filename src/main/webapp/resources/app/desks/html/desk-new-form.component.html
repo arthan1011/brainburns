@@ -1,0 +1,24 @@
+<div>
+    <h2>New desk</h2>
+    <form #deskNewForm="ngForm" novalidate autocomplete="off">
+        <div class="form-group">
+            <div class="label-container">
+                <label for="title">Title</label>
+            </div>
+            <div class="input-container">
+                <input id="title"
+                       autocomplete="off"
+                       type="text"
+                       name="title"
+                       [(ngModel)]="desk.title"
+                       required>
+            </div>
+        </div>
+        <div class="form-controls">
+            <button class="add-btn" [disabled]="!deskNewForm.form.valid"
+                    (click)="addDesk();">
+                Create
+            </button>
+        </div>
+    </form>
+</div>

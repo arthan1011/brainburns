@@ -3,6 +3,7 @@
     */
 
 import {Component} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Component({
     selector: "bb-desks",
@@ -10,4 +11,13 @@ import {Component} from "@angular/core";
     templateUrl: "html/desks.component.html",
     styleUrls: ["css/desks.component.css"]
 })
-export class DesksComponent {}
+export class DesksComponent {
+
+    constructor(
+        private router: Router
+    ) {};
+
+    toNewDeskForm() {
+        this.router.navigate(["/desks/new"]);
+    }
+}

@@ -1,9 +1,30 @@
+div.desks {
+    position: relative;
+}
+
 div.desk-list {
+    vertical-align: top;
     width: 20%;
-    float: left;
+    display: inline-block;
     margin: 5px;
 }
 
-div.desk-detial {
-    margin-left: calc(20% + 5px);
+div.desk-detail {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 75%;
+    margin: 5px 5px 5px 15px;
+}
+
+div .desks-controls {
+    text-align: left;
+    margin: 5px;
+}
+
+div .separator-vert {
+    top: 1px;
+    left: 21.5%;
+    position: absolute;
+    height: 95%;
+    border-left: 2px solid #999;
 }

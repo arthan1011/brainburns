@@ -16,6 +16,8 @@ h1 {
 
 h2 {
     font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 0;
     font-family: Open Sans, sans-serif;
 }
 
@@ -39,7 +41,6 @@ button {
     border: 1px solid #ACACAC;
     background-color: #7C726B;
     color: #422C1E;
-    margin-bottom: 10px;
     cursor: pointer;
 }
 
