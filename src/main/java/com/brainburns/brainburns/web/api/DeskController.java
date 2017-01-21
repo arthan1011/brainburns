@@ -5,9 +5,7 @@ import com.brainburns.brainburns.service.DeskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +36,25 @@ public class DeskController {
         result.put("data", deskList);
 
         return result;
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Map<String, Object> createDesk(@RequestBody Desk desk, Authentication auth) {
+
+        desk.setUsername(auth.getName());
+        long createdDeskId = deskService.createDesk(desk);
+
+        Map<String, Object> response = new HashMap<>();
+        Map<String, Object> responseData = new HashMap<>();
+        response.put("data", responseData);
+
+        if (createdDeskId != -1) {
+            responseData.put("status", "success");
+        } else {
+            responseData.put("status", "error");
+        }
+
+        return response;
     }
 
     @GetMapping("/test")

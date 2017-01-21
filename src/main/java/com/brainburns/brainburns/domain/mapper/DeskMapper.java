@@ -1,10 +1,7 @@
 package com.brainburns.brainburns.domain.mapper;
 
 import com.brainburns.brainburns.domain.model.Desk;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -31,4 +28,10 @@ public interface DeskMapper {
             @Result(property = "id", column = "deskid")
     })
     List<Desk> findByUsername(String username);
+
+    // Using @Select because of RETURNING clause
+    @Select("INSERT INTO desk (title, username) " +
+            "VALUES (#{title}, #{username}) " +
+            "RETURNING deskid")
+    long createDesk(Desk desk);
 }

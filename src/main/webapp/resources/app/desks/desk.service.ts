@@ -31,4 +31,12 @@ export class DeskService {
         return this.getDesks()
             .then(desks => desks.find(desk => desk.id === id));
     }
+
+    createDesk(desk: Desk) {
+        this.http.post(URL_DESKS, desk)
+            .subscribe(
+                (res: Response) => console.log(res.json()),
+                (res: Response) => console.error(res.json())
+            );
+    }
 }

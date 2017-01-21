@@ -18,10 +18,10 @@ export class DeskNewFormComponent {
     public desk: Desk = new Desk();
 
     constructor(
-        private deskService: DeskService
+        private deskService: DeskService,
     ) {}
 
     addDesk() {
-
+        this.deskService.createDesk(this.desk);
     }
 }

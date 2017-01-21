@@ -30,4 +30,17 @@ public class DeskService {
     public List<Desk> findByUsername(String username) {
         return deskMapper.findByUsername(username);
     }
+
+    public long createDesk(Desk desk) {
+        List<Desk> userDesks = deskMapper.findByUsername(desk.getUsername());
+
+        boolean userHasDeskWithTheSameName = userDesks.stream()
+                .anyMatch(item -> item.getTitle().equals(desk.getTitle()));
+        if (userHasDeskWithTheSameName) {
+            // TODO: Raise exception here, no return
+            return -1;
+        } else {
+            return deskMapper.createDesk(desk);
+        }
+    }
 }
