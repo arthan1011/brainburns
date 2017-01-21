@@ -3,6 +3,7 @@ package com.brainburns.brainburns.service;
 import com.brainburns.brainburns.config.RootConfig;
 import com.brainburns.brainburns.domain.model.Desk;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +27,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 )
 @TestExecutionListeners({
         DependencyInjectionTestExecutionListener.class,
-        DirtiesContextTestExecutionListener.class,
-        TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
 public class DeskServiceTest {
@@ -38,20 +37,20 @@ public class DeskServiceTest {
     private UserService userService;
 
     @Test
+    @DatabaseSetup("/dbtest/desks.xml")
     public void should_retrieve_user() throws Exception {
 
         System.out.println(userService.getHello());
 
-        Desk desk = deskService.findById(1);
-
+        Desk desk = deskService.findById(18);
 
         Assert.assertEquals(
                 "should get proper desk id",
-                1,
+                18,
                 desk.getId());
         Assert.assertEquals(
                 "should get title of first desk",
-                "firstDesk",
+                "Fst",
                 desk.getTitle());
     }
 }
