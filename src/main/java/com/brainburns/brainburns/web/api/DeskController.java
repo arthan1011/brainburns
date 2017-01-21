@@ -39,4 +39,9 @@ public class DeskController {
 
         return result;
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Tested";
+    }
 }

@@ -55,7 +55,8 @@ dependencies {
 
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: "${servletApiVersion}"
 
-    testCompileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: "${servletApiVersion}"
+    testCompile group: 'javax.servlet', name: 'javax.servlet-api', version: "${servletApiVersion}"
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile group: 'com.jayway.jsonpath', name: 'json-path', version: "${jsonPathVersion}"
     testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: "${jsonPathVersion}"

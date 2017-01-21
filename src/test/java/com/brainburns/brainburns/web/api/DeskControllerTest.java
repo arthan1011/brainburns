@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -48,11 +49,9 @@ public class DeskControllerTest {
 
         mockMvc.perform(
                 MockMvcRequestBuilders
-                        .get("/api/desk")
-                        .accept(MediaType.APPLICATION_JSON_VALUE))
+                        .get("/api/desk/test"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data[0].id", Matchers.is(1)))
-                .andExpect(jsonPath("$.data[1].name", Matchers.is("Kanji")));
+                .andExpect(content().string("Tested"));
 
     }
 }
