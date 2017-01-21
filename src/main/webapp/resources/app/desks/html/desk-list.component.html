@@ -2,7 +2,7 @@
     <button class="add-btn" type="button">New desk</button>
     <ul class="items">
         <li *ngFor="let desk of desks" (click)="selectDesk(desk)">
-            {{desk.name}}
+            {{desk.title}}
         </li>
     </ul>
 </div>

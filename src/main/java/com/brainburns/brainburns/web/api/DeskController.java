@@ -1,7 +1,10 @@
 package com.brainburns.brainburns.web.api;
 
 import com.brainburns.brainburns.domain.model.Desk;
+import com.brainburns.brainburns.service.DeskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,14 +22,17 @@ import java.util.Map;
 @RequestMapping("/api/desk")
 public class DeskController {
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Map<String, List<Desk>> getDesks() {
+    private final DeskService deskService;
 
-        List<Desk> deskList = new ArrayList<>();
-        deskList.add(new Desk(1, "English"));
-        deskList.add(new Desk(2, "Kanji"));
-        deskList.add(new Desk(3, "World"));
-        deskList.add(new Desk(4, "German"));
+    @Autowired
+    public DeskController(DeskService deskService) {
+        this.deskService = deskService;
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Map<String, List<Desk>> getDesks(Authentication auth) {
+        String username = auth.getName();
+        List<Desk> deskList = deskService.findByUsername(username);
 
         Map<String, List<Desk>> result = new HashMap<>();
         result.put("data", deskList);

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by arthan on 20.01.2017. | Project brainburns
  */
@@ -23,5 +25,9 @@ public class DeskService {
 
     public Desk findById(long id) {
         return deskMapper.findById(id);
+    }
+
+    public List<Desk> findByUsername(String username) {
+        return deskMapper.findByUsername(username);
     }
 }

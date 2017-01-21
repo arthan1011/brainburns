@@ -28,7 +28,6 @@ export class DeskListComponent implements OnInit {
     public desks: Desk[];
 
     selectDesk(desk: Desk): void {
-        console.log(`Navigating to desk ${desk.id}`);
         this.router.navigate(["/desks", desk.id]);
     }
 }

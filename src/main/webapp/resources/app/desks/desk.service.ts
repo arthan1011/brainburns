@@ -15,11 +15,16 @@ export class DeskService {
 
     constructor(private http: Http) {}
 
+    allDesks: Desk[];
+
     getDesks(): Promise<Desk[]> {
-        return this.http.get(URL_DESKS)
-            .toPromise()
-            .then((res:Response) => res.json().data)
-            .catch(error => console.log(error));
+        if (!this.allDesks) {
+            return this.http.get(URL_DESKS)
+                .toPromise()
+                .then((res: Response) => this.allDesks = res.json().data)
+                .catch(error => console.log(error));
+        }
+        return Promise.resolve(this.allDesks);
     }
 
     getDesk(id: number) {

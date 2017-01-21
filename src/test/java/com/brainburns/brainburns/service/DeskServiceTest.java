@@ -16,6 +16,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
+import java.util.List;
+
 /**
  * Created by arthan on 20.01.2017. | Project brainburns
  */
@@ -42,15 +44,12 @@ public class DeskServiceTest {
 
         System.out.println(userService.getHello());
 
-        Desk desk = deskService.findById(18);
+        List<Desk> desks = deskService.findByUsername("admin");
 
         Assert.assertEquals(
-                "should get proper desk id",
-                18,
-                desk.getId());
-        Assert.assertEquals(
-                "should get title of first desk",
-                "Fst",
-                desk.getTitle());
+                "Should find all desks for user",
+                2,
+                desks.size()
+        );
     }
 }

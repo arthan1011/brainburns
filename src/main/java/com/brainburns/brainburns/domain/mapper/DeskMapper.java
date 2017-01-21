@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by arthan on 20.01.2017. | Project brainburns
  */
@@ -21,4 +23,12 @@ public interface DeskMapper {
             @Result(property = "id", column = "deskid")
     })
     Desk findById(long id);
+
+    @Select("SELECT deskid, username, title " +
+            "FROM desk " +
+            "WHERE username=#{username}")
+    @Results({
+            @Result(property = "id", column = "deskid")
+    })
+    List<Desk> findByUsername(String username);
 }
