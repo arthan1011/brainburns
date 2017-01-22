@@ -10,6 +10,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import {DeskService} from "./desk.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: "bb-desk-detail",
@@ -32,12 +33,11 @@ export class DeskDetailComponent implements OnInit {
                 return this.findDesk(+params['id']);
             })
             .subscribe((desk: Desk) => {
-                // console.log(`Current desk with id ${desk.id}`);
                 this.desk = desk
             });
     }
 
-    private findDesk(deskId: number): Promise<Desk> {
+    private findDesk(deskId: number): Observable<Desk> {
         return this.deskService.getDesk(deskId);
     }
 }

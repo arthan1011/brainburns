@@ -22,7 +22,7 @@ export class DeskListComponent implements OnInit {
 
     ngOnInit() {
         this.deskService.getDesks()
-            .then(desks => this.desks = desks);
+            .subscribe(desks => this.desks = desks);
     }
 
     public desks: Desk[];
