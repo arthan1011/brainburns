@@ -1,9 +1,6 @@
 <div class="desks">
-    <div class="desks-controls">
-        <button class="add-btn" (click)="toNewDeskForm()" type="button">New desk</button>
-    </div>
     <div class="desk-list">
-        <bb-desk-list></bb-desk-list>
+        <bb-desk-list (onNewDesk)="toNewDeskForm()"></bb-desk-list>
     </div>
     <div class="separator-vert">
     </div>

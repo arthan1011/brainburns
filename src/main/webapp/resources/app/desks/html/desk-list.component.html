@@ -1,4 +1,7 @@
 <div>
+    <div class="desks-controls">
+        <button class="add-btn" (click)="newDesk()" type="button">New desk</button>
+    </div>
     <ul class="items">
         <li *ngFor="let desk of desks" (click)="selectDesk(desk)">
             {{desk.title}}

@@ -45,7 +45,7 @@ button {
 }
 
 button.add-btn {
-    background-color: #9A9F79;
+    background-color: #a1b96c;
 }
 
 /*///////////////===================_Login_and_SignUp_=========================//////////////*/
@@ -103,6 +103,8 @@ div.login-layout {
 }
 
 fieldset#actions a {
+    margin-top: 5px;
+    display: inline-block;
     color: #00a1d2;
     text-decoration: none;
 }
