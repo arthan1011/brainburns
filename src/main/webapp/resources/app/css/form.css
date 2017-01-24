@@ -19,23 +19,24 @@
 }
 .form-group input[required], .form-group input.ng-valid[required] {
     min-width: calc(100% - 8px);
-    border-left: 5px solid #16b329;
     border-right: 5px solid #16b329;
 }
 .form-group input.ng-invalid[required] {
     min-width: calc(100% - 8px);
-    border-left: 5px solid #ff411c;
     border-right: 5px solid #ff411c;
 }
 
-.form-group .label-container {
-    display: inline-block;
-    width: 15%;
-    text-align: right;
-    text-transform: uppercase;
-    margin-right: 10px;
+.form-group label {
+    display: block;
     font-size: 1.4em;
+    width: 25%;
+    padding: 5px 10px;
+    border: 3px solid #232323;
+    border-radius: 3px;
+    margin-bottom: -3px;
+    background-color: #7C726B;
 }
+
 .form-group .input-container {
     display: inline-block;
     width: 75%;
