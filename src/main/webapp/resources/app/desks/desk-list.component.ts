@@ -7,6 +7,7 @@ import {Desk} from "./model/Desk";
 import {Router} from "@angular/router";
 import {DeskService} from "./desk.service";
 import {Subscription} from "rxjs";
+import {DeskCommunicationService} from "./desk-communication.service";
 
 @Component({
     selector: "bb-desk-list",
@@ -24,9 +25,11 @@ export class DeskListComponent implements OnInit, OnDestroy {
 
     constructor(
         private deskService: DeskService,
+        private deskCommunicationService: DeskCommunicationService,
         private router: Router
     ) {
-        this.updateDesksSub = deskService.deskListUpdate$.subscribe(() => this.updateDesks());
+        this.updateDesksSub = deskCommunicationService.deskListUpdate$
+            .subscribe(() => this.updateDesks());
     };
 
     ngOnInit() {

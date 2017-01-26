@@ -10,21 +10,14 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/find";
 import "rxjs/add/observable/of";
 import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
 
 const URL_DESKS = "/api/desk";
 
 @Injectable()
 export class DeskService {
+    desks: Desk[];
 
     constructor(private http: Http) {}
-
-    private deskCreatedSource = new Subject();
-    private deskListUpdateSource = new Subject();
-    deskCreated$: Observable<any> = this.deskCreatedSource.asObservable();
-    deskListUpdate$: Observable<any> = this.deskListUpdateSource.asObservable();
-
-    desks: Desk[];
 
     getDesks(): Observable<Desk[]> {
         if (this.desks) {
@@ -41,13 +34,8 @@ export class DeskService {
     }
 
     createDesk(desk: Desk) {
-        this.http.post(URL_DESKS, desk)
+        return this.http.post(URL_DESKS, desk)
             .do(this.desks = null)
-            .do(() => this.deskCreatedSource.next("success"))
-            .subscribe();
-    }
 
-    updateDesks() {
-        this.deskListUpdateSource.next(true);
     }
 }

@@ -6,6 +6,7 @@ import {Component, OnDestroy} from "@angular/core";
 import {Router} from "@angular/router";
 import {DeskService} from "./desk.service";
 import {Subscription} from "rxjs";
+import {DeskCommunicationService} from "./desk-communication.service";
 
 @Component({
     selector: "bb-desks",
@@ -18,9 +19,10 @@ export class DesksComponent implements OnDestroy {
 
     constructor(
         private router: Router,
-        private deskService: DeskService
+        private deskCommunicationService: DeskCommunicationService
     ) {
-        this.deskCreatedSub = deskService.deskCreated$.subscribe((status) => this.onNewDeskCreated(status));
+        this.deskCreatedSub = deskCommunicationService.deskCreated$
+            .subscribe((status) => this.onNewDeskCreated(status));
     };
 
     toNewDeskForm() {
@@ -29,7 +31,7 @@ export class DesksComponent implements OnDestroy {
 
     onNewDeskCreated(status: string) {
         console.log(`Desk creation. Status: ${status}`);
-        this.deskService.updateDesks();
+        this.deskCommunicationService.updateDesks();
     }
 
     ngOnDestroy() {

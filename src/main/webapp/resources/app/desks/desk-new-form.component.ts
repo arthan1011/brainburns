@@ -5,6 +5,7 @@
 import {Component} from "@angular/core";
 import {Desk} from "./model/Desk";
 import {DeskService} from "./desk.service";
+import {DeskCommunicationService} from "./desk-communication.service";
 
 @Component({
     moduleId: module.id,
@@ -19,9 +20,11 @@ export class DeskNewFormComponent {
 
     constructor(
         private deskService: DeskService,
+        private deskCommunicationService: DeskCommunicationService,
     ) {}
 
     addDesk() {
-        this.deskService.createDesk(this.desk);
+        this.deskService.createDesk(this.desk)
+            .subscribe(() => this.deskCommunicationService.deskCreated("success"));
     }
 }

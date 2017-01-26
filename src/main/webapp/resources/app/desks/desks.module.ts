@@ -12,6 +12,7 @@ import {DesksRoutingModule} from "./desks-routing.module";
 import {DeskService} from "./desk.service";
 import {HttpModule} from "@angular/http";
 import {DeskNewFormComponent} from "./desk-new-form.component";
+import {DeskCommunicationService} from "./desk-communication.service";
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {DeskNewFormComponent} from "./desk-new-form.component";
         DeskNewFormComponent
     ],
     providers: [
-        DeskService
+        DeskService,
+        DeskCommunicationService
     ]
 })
 export class DesksModule {
