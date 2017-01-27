@@ -3,7 +3,7 @@
  */
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {CardFormComponent} from "./card-form.component";
+import {CardFormComponent} from "./desks/card-form.component";
 import {DashboardComponent} from "./dashboard.component";
 import {DesksComponent} from "./desks/desks.component";
 
@@ -16,10 +16,6 @@ const appRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent
-    },
-    {
-        path: 'card/new',
-        component: CardFormComponent
     },
     {
         path: 'desks',

@@ -3,14 +3,14 @@
  */
 
 import {Component} from '@angular/core';
-import {Card} from "./model/Card";
+import {Card} from "../model/Card";
 
 @Component({
     selector: "bb-card-form",
     moduleId: module.id,
     styleUrls: [
         "css/card-form.component.css",
-        "css/form.css"
+        "../css/form.css"
     ],
     templateUrl: "html/card-form.component.html"
 })

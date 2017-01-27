@@ -13,6 +13,7 @@ import {DeskService} from "./desk.service";
 import {HttpModule} from "@angular/http";
 import {DeskNewFormComponent} from "./desk-new-form.component";
 import {DeskCommunicationService} from "./desk-communication.service";
+import {CardFormComponent} from "./card-form.component";
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import {DeskCommunicationService} from "./desk-communication.service";
         DesksComponent,
         DeskDetailComponent,
         DeskListComponent,
-        DeskNewFormComponent
+        DeskNewFormComponent,
+        CardFormComponent
     ],
     providers: [
         DeskService,
