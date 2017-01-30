@@ -1,4 +1,4 @@
-.items li {
+.items div.desk-title {
     list-style-type: none;
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -7,14 +7,56 @@
     padding: 7px 5px;
     background-color: #999999;
     color: #3D2632;
-    cursor: pointer;
     font-size: 1.1em;
+    flex-basis: 150px;
+}
+.items > div {
+    display: flex;
+    cursor: pointer;
     margin: 2px;
 }
 
-ul.items {
-    padding: 0;
-    margin: 0;
+.items.selectMode {
+}
+
+.items.selectMode div.selected {
+    background-color: yellowgreen;
+}
+
+.items div.arrow-container {
+    flex-grow: 1;
+    overflow: hidden;
+    background-color: #999999;
+}
+.items div.arrow {
+    display: flex;
+    width: 100%;
+    position: relative;
+    background-color: wheat;
+    transition: .5s;
+}
+.items > div:not(.selected) div.arrow {
+    right: -100px;
+}
+.items > div.selected div.arrow {
+    right: 0
+}
+.items.selectMode > div:not(.selected):hover div.arrow{
+    right: -62px;
+    transition: .2s;
+}
+.items div.arrow-tip {
+    background-color: #999;
+    padding: 0 !important;
+    height: 0;
+    width: 0;
+    border: solid;
+    border-width: 18px 32px 18px 0;
+    border-color: transparent #6B5661 transparent
+}
+.items div.arrow-base {
+    background-color: #6B5661;
+    flex-grow: 1;
 }
 
 div.desks-controls {
