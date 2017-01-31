@@ -3,7 +3,7 @@
  */
 
 import {Component} from '@angular/core';
-import {Card} from "../model/Card";
+import {Card} from "./model/Card";
 
 @Component({
     selector: "bb-card-form",

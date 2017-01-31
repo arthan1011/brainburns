@@ -3,6 +3,7 @@ package com.brainburns.brainburns.domain.model;
 /**
  * Created by arthan on 19.01.2017. | Project brainburns
  */
+
 public class Desk {
     private long id;
     private String username;
