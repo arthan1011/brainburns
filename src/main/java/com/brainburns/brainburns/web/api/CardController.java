@@ -30,7 +30,7 @@ public class CardController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Map<String, Object> createCard(@RequestBody Card card, Authentication auth) {
-        getCardService().saveCard(auth.getName(), card);
+        cardService.saveCard(auth.getName(), card);
 
         return createSuccessResponse();
     }
@@ -39,15 +39,5 @@ public class CardController {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
         return response;
-    }
-
-    public String test() {
-        String var = cardService.tested("Var");
-        System.out.println(var);
-        return "Tested";
-    }
-
-    public CardService getCardService() {
-        return cardService;
     }
 }

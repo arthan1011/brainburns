@@ -1,6 +1,8 @@
 package com.brainburns.brainburns.service;
 
+import com.brainburns.brainburns.domain.mapper.CardMapper;
 import com.brainburns.brainburns.domain.model.Card;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CardService {
 
+    @Autowired
+    private CardMapper cardMapper;
+
     public void saveCard(String username, Card newCard) {
-
+        cardMapper.createCard(newCard);
     }
 
-    public String tested(String value) {
-        return "Res";
-    }
 }

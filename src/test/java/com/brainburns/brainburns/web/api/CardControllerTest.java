@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -46,10 +44,10 @@ public class CardControllerTest {
     FilterChainProxy springSecurityFilterChain;
 
     @Tested(availableDuringSetup = true)
-    CardController cardController;
+    private CardController cardController;
 
     @Injectable
-    CardService cardService;
+    private CardService cardService;
 
     @Before
     public void setUp() throws Exception {
@@ -61,13 +59,20 @@ public class CardControllerTest {
 
     @Test
     public void should_call_save_card_method() throws Exception {
-        new Expectations() {{
-            cardService.saveCard("admin", (Card) any);
-        }};
-
         ObjectMapper mapper = new ObjectMapper();
         Card inputCard = new Card("Progress", null, "Прогресс");
+        inputCard.setDeskId(123);
         String inputJson = mapper.writeValueAsString(inputCard);
+
+        new Expectations() {{
+            cardService.saveCard("admin", with(new Delegate<Card>() {
+                public boolean check(Card card) {
+                    return card.getWriting().equals(inputCard.getWriting()) &&
+                            card.getDeskId() == inputCard.getDeskId() &&
+                            card.getMeaning().equals(inputCard.getMeaning());
+                }
+            }));
+        }};
 
         mockMvc.perform(
                 MockMvcRequestBuilders

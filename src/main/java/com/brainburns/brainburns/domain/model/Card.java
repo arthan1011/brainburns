@@ -6,6 +6,7 @@ package com.brainburns.brainburns.domain.model;
 
 public class Card {
     private long id;
+    private long deskId;
     private String writing;
     private String transcription;
     private String meaning;
@@ -49,5 +50,13 @@ public class Card {
 
     public void setMeaning(String meaning) {
         this.meaning = meaning;
+    }
+
+    public void setDeskId(long deskId) {
+        this.deskId = deskId;
+    }
+
+    public long getDeskId() {
+        return deskId;
     }
 }

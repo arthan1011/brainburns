@@ -15,8 +15,6 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import java.util.List;
 
@@ -57,7 +55,7 @@ public class DeskServiceTest {
 
     @Test
     @DatabaseSetup("/dbtest/desks.xml")
-    @ExpectedDatabase(value = "/dbtest/desks_add.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = "/dbtest/desks_after_add.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void should_create_desk_for_user() throws Exception {
         Desk desk = new Desk();
         desk.setTitle("Trd");
