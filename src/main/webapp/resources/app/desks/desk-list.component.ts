@@ -1,6 +1,6 @@
 /**
- * Created by arthan on 17.01.2017.
- */
+* Created by arthan on 17.01.2017.
+*/
 
 import {Component, OnInit, EventEmitter, Output, OnDestroy} from "@angular/core";
 import {Desk} from "./model/Desk";
@@ -22,6 +22,7 @@ export class DeskListComponent implements OnInit, OnDestroy {
     public desks: Desk[];
     public deskListMode: string;
     selectedDesk: Desk;
+    public newCards: {[key: string]: number} = {};
 
     @Output()
     public onNewDesk: EventEmitter<any> = new EventEmitter();
@@ -38,10 +39,20 @@ export class DeskListComponent implements OnInit, OnDestroy {
         this.updateDesksSub = deskCommunicationService.deskListUpdate$
             .subscribe(() => this.updateDesks());
         this.cardService.addedCards$
-            .subscribe((cards: Card[]) => {
-                cards.forEach(card => console.log(`Card with id "${card.id}" added to desk #${card.deskId}`));
-            })
+            .subscribe(this.onCardsAdded.bind(this))
     };
+
+    onCardsAdded(cards: Card[]) {
+        cards.forEach(card => {
+            console.log(`Card with id "${card.id}" added to desk #${card.deskId}`);
+            if (this.newCards[card.deskId]) {
+                this.newCards[card.deskId]++
+            } else {
+                this.newCards[card.deskId] = 1;
+            }
+        }, this);
+        console.log("new Cards: ", this.newCards);
+    }
 
     ngOnInit() {
         this.updateDesks();

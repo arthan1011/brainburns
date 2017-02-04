@@ -6,7 +6,15 @@
         <div *ngFor="let desk of desks"
              [class.selected]="isSelected(desk)"
              (click)="selectDesk(desk)">
-            <div class="desk-title">{{desk.title}}</div>
+            <div class="desk-title">
+                {{desk.title}}
+            </div>
+            <div class="new-cards">
+                <span *ngIf="newCards[desk.id] != null"
+                      class="">
+                    {{newCards[desk.id] || 0}}
+                </span>
+            </div>
             <!--Moving triangle-->
             <div class="arrow-container">
                 <div class="arrow">

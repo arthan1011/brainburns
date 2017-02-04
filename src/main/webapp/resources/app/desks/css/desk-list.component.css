@@ -4,13 +4,24 @@
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;          /* Likely future */
-    padding: 7px 5px;
+    padding: 10px 7px;
     background-color: #999999;
     color: #3D2632;
-    font-size: 1.1em;
+    font-size: 1.3em;
     flex-basis: 150px;
 }
+.items div.new-cards {
+    background-color: transparent;
+    padding: 12px 0;
+    color: gold;
+    font-size: 1.1em;
+    position: absolute;
+    right: 3px;
+    z-index: 10;
+
+}
 .items > div {
+    position: relative;
     display: flex;
     cursor: pointer;
     margin: 2px;
@@ -43,7 +54,7 @@
 }
 .items.selectMode > div:not(.selected):hover div.arrow{
     right: -62px;
-    transition: .2s;
+    transition: .1s;
 }
 .items div.arrow-tip {
     background-color: #999;
@@ -51,7 +62,7 @@
     height: 0;
     width: 0;
     border: solid;
-    border-width: 18px 32px 18px 0;
+    border-width: 23px 35px 23px 0;
     border-color: transparent #6B5661 transparent
 }
 .items div.arrow-base {

@@ -12,17 +12,25 @@ import "rxjs/add/observable/of";
 import {Observable} from "rxjs/Observable";
 import {Card} from "./model/Card";
 import {Subject} from "rxjs/Subject";
+import {Router} from "@angular/router";
 
 const URL_CARD = "/api/card";
 
 @Injectable()
 export class CardService {
-    selectedDesk: Desk;
+    public selectedDesk: Desk;
     private addedCardsSubject = new Subject();
     // todo: Maybe it would be better to create card-communication.service
     public addedCards$: Observable<Card[]> = this.addedCardsSubject.asObservable();
 
-    constructor(private http: Http) {}
+    constructor(
+        private http: Http,
+        private router: Router
+    ) {
+        router.events.subscribe(event => {
+            this.selectedDesk = null;
+        })
+    }
 
     selectDesk(desk: Desk) {
         this.selectedDesk = desk;

@@ -36,9 +36,9 @@
         </div>
 
         <div class="form-controls">
-            <button class="add-btn" [disabled]="!cardForm.form.valid"
+            <button class="add-btn" [disabled]="!cardForm.form.valid || !cardService.selectedDesk"
                     (click)="onNext();">
-                Next
+                {{getAddButtonLabel()}}
             </button>
         </div>
     </form>
