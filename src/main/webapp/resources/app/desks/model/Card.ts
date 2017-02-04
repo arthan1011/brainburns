@@ -3,6 +3,8 @@
  */
 
 export class Card {
+    public id: number;
+    public deskId: number;
     public writing: string;
     public transcription: string;
     public meaning: string;

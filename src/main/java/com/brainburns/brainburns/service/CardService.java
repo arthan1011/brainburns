@@ -17,8 +17,9 @@ public class CardService {
     @Autowired
     private CardMapper cardMapper;
 
-    public void saveCard(String username, Card newCard) {
-        cardMapper.createCard(newCard);
+    public Card saveCard(String username, Card newCard) {
+        long cardId = cardMapper.createCard(newCard);
+        return cardMapper.findById(cardId);
     }
 
 }

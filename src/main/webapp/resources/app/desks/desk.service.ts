@@ -36,6 +36,5 @@ export class DeskService {
     createDesk(desk: Desk) {
         return this.http.post(URL_DESKS, desk)
             .do(this.desks = null)
-
     }
 }

@@ -8,6 +8,8 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 import {DeskService} from "./desk.service";
 import {Subscription} from "rxjs";
 import {DeskCommunicationService} from "./desk-communication.service";
+import {CardService} from "./card.service";
+import {Card} from "./model/Card";
 
 @Component({
     selector: "bb-desk-list",
@@ -28,12 +30,17 @@ export class DeskListComponent implements OnInit, OnDestroy {
 
     constructor(
         private deskService: DeskService,
+        private cardService: CardService,
         private deskCommunicationService: DeskCommunicationService,
         private router: Router,
         private route: ActivatedRoute
     ) {
         this.updateDesksSub = deskCommunicationService.deskListUpdate$
             .subscribe(() => this.updateDesks());
+        this.cardService.addedCards$
+            .subscribe((cards: Card[]) => {
+                cards.forEach(card => console.log(`Card with id "${card.id}" added to desk #${card.deskId}`));
+            })
     };
 
     ngOnInit() {
@@ -60,7 +67,9 @@ export class DeskListComponent implements OnInit, OnDestroy {
 
     selectDesk(desk: Desk): void {
         if (this.isSelectMode()) {
+            console.log(`Desk #${desk.id} "${desk.title}" selected`);
             this.selectedDesk = desk;
+            this.cardService.selectDesk(desk);
         } else {
             this.router.navigate(["/desks", desk.id]);
         }

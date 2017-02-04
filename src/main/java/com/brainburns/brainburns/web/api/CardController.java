@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,9 +32,13 @@ public class CardController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Map<String, Object> createCard(@RequestBody Card card, Authentication auth) {
-        cardService.saveCard(auth.getName(), card);
+        Card savedCard = cardService.saveCard(auth.getName(), card);
 
-        return createSuccessResponse();
+        Map<String, Object> response = createSuccessResponse();
+        List<Card> cards = new ArrayList<>();
+        cards.add(savedCard);
+        response.put("data", cards);
+        return response;
     }
 
     private Map<String, Object> createSuccessResponse() {

@@ -4,6 +4,7 @@ import com.brainburns.brainburns.domain.model.Card;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,6 +23,9 @@ public class CardServiceTest extends AbstractDatabaseTest {
     public void should_create_new_card() throws Exception {
         Card inputCard = new Card("Test", null, "Тест");
         inputCard.setDeskId(12);
-        cardService.saveCard("arthan", inputCard);
+        Card savedCard = cardService.saveCard("arthan", inputCard);
+
+        Assert.assertNotEquals("Should return card with id", -1, savedCard.getId());
+        Assert.assertNotNull("Should return card with desk id", savedCard.getDeskId());
     }
 }

@@ -4,6 +4,7 @@
 
 import {Component} from '@angular/core';
 import {Card} from "./model/Card";
+import {CardService} from "./card.service";
 
 @Component({
     selector: "bb-card-form",
@@ -17,7 +18,12 @@ import {Card} from "./model/Card";
 export class CardFormComponent {
     card: Card = new Card();
 
+    constructor(
+        private cardService: CardService
+    ) {}
+
     public onNext(): void {
+        this.cardService.createCard(this.card);
         this.card = new Card();
     }
 }

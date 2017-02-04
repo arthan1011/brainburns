@@ -1,7 +1,3 @@
-/**
- * Created by arthan on 17.01.2017.
- */
-
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
@@ -14,6 +10,7 @@ import {HttpModule} from "@angular/http";
 import {DeskNewFormComponent} from "./desk-new-form.component";
 import {DeskCommunicationService} from "./desk-communication.service";
 import {CardFormComponent} from "./card-form.component";
+import {CardService} from "./card.service";
 
 @NgModule({
     imports: [
@@ -31,6 +28,7 @@ import {CardFormComponent} from "./card-form.component";
     ],
     providers: [
         DeskService,
+        CardService,
         DeskCommunicationService
     ]
 })

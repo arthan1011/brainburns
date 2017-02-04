@@ -5,7 +5,7 @@ package com.brainburns.brainburns.domain.model;
  */
 
 public class Card {
-    private long id;
+    private long id = -1; // initialize with incorrect value
     private long deskId;
     private String writing;
     private String transcription;

@@ -7,6 +7,7 @@ import com.brainburns.brainburns.domain.model.Card;
 import com.brainburns.brainburns.service.CardService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mockit.*;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by arthan on 31.01.2017. | Project brainburns
@@ -38,6 +40,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @WebAppConfiguration
 public class CardControllerTest {
 
+    public static final int DESK_ID = 123;
     private MockMvc mockMvc;
 
     @Autowired
@@ -61,7 +64,7 @@ public class CardControllerTest {
     public void should_call_save_card_method() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         Card inputCard = new Card("Progress", null, "Прогресс");
-        inputCard.setDeskId(123);
+        inputCard.setDeskId(DESK_ID);
         String inputJson = mapper.writeValueAsString(inputCard);
 
         new Expectations() {{
@@ -71,7 +74,7 @@ public class CardControllerTest {
                             card.getDeskId() == inputCard.getDeskId() &&
                             card.getMeaning().equals(inputCard.getMeaning());
                 }
-            }));
+            })); result = inputCard;
         }};
 
         mockMvc.perform(
@@ -82,6 +85,8 @@ public class CardControllerTest {
                         // todo: Используем существующих юзеров, надо будет тестовую конфигуркцию SpringSecurity
                         .with(SecurityMockMvcRequestPostProcessors.user("admin").password("admin"))
                 .content(inputJson))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status", Matchers.is("success")))
+                .andExpect(jsonPath("$.data[0].deskId", Matchers.is(DESK_ID)));
     }
 }
