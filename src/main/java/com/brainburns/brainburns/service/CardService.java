@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by arthan on 31.01.2017. | Project brainburns
  */
@@ -22,4 +24,8 @@ public class CardService {
         return cardMapper.findById(cardId);
     }
 
+
+    public List<Card> getCardsInDesk(long deskId) {
+        return cardMapper.findByDesk(deskId);
+    }
 }

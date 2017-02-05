@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <desk deskid="11" username="arthan" title="English" />
+    <desk deskid="12" username="admin" title="Simple" />
+
+    <card deskid="11" writing="Progress" meaning="Прогресс" />
+    <card deskid="11" writing="Test" meaning="Тест" />
+    <card deskid="12" writing="Advanced" meaning="Продвинутый" />
+</dataset>

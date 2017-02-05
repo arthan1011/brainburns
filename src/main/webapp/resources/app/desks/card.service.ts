@@ -3,7 +3,7 @@
  */
 import {Injectable} from "@angular/core";
 import {Desk} from "./model/Desk";
-import {Http, Response} from "@angular/http";
+import {Http, Response, URLSearchParams} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
@@ -41,5 +41,12 @@ export class CardService {
         this.http.post(URL_CARD, card)
             .map((res: Response) => res.json().data)
             .subscribe((cards: Card[]) => this.addedCardsSubject.next(cards));
+    }
+
+    getCardsForDesk(deskId: number) {
+        let params = new URLSearchParams();
+        params.set("deskId", deskId.toString());
+        return this.http.get(URL_CARD, {search: params})
+            .map((res: Response) => res.json())
     }
 }

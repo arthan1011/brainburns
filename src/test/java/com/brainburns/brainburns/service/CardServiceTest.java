@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by arthan on 01.02.2017. | Project brainburns
  */
@@ -27,5 +29,13 @@ public class CardServiceTest extends AbstractDatabaseTest {
 
         Assert.assertNotEquals("Should return card with id", -1, savedCard.getId());
         Assert.assertNotNull("Should return card with desk id", savedCard.getDeskId());
+    }
+
+    @Test
+    @DatabaseSetup("/dbtest/cards_in_desks.xml")
+    public void should_find_all_cards_for_desk() throws Exception {
+        List<Card> cards = cardService.getCardsInDesk(11);
+        int expectedCardsNumber = 2;
+        Assert.assertEquals("Should return all cards in desk", expectedCardsNumber, cards.size());
     }
 }

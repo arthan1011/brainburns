@@ -89,4 +89,20 @@ public class CardControllerTest {
                 .andExpect(jsonPath("$.status", Matchers.is("success")))
                 .andExpect(jsonPath("$.data[0].deskId", Matchers.is(DESK_ID)));
     }
+
+    @Test
+    public void should_call_get_cards_method() throws Exception {
+        final long DESK_ID = 32;
+
+        new Expectations() {{
+            cardService.getCardsInDesk(DESK_ID);
+        }};
+
+        mockMvc.perform(
+                MockMvcRequestBuilders
+                        .get("/api/card")
+                        .param("deskId", Long.toString(DESK_ID))
+                        .with(SecurityMockMvcRequestPostProcessors.user("admin").password("admin")))
+                .andExpect(status().isOk());
+    }
 }

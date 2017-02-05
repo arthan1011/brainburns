@@ -1,0 +1,7 @@
+.bb-list .bb-row {
+    display: flex;
+}
+.bb-list .bb-row > span {
+    flex-grow: 1;
+    flex-basis: 0;
+}

@@ -1,4 +1,11 @@
 <div>
     <h2>Desk Details</h2>
     for {{desk?.title}}
+    <div class="bb-list"> <!--Card list-->
+        <div *ngFor="let card of cards" class="bb-row"> <!--Row-->
+            <span>{{card.writing}}</span>
+            <span>{{card.transcription}}</span>
+            <span>{{card.meaning}}</span>
+        </div>
+    </div>
 </div>

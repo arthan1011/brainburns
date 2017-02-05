@@ -5,10 +5,7 @@ import com.brainburns.brainburns.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +36,12 @@ public class CardController {
         cards.add(savedCard);
         response.put("data", cards);
         return response;
+    }
+
+    @GetMapping()
+    public List<Card> getCards(@RequestParam long deskId) {
+        // todo: User should have access only to his own cards
+        return cardService.getCardsInDesk(deskId);
     }
 
     private Map<String, Object> createSuccessResponse() {

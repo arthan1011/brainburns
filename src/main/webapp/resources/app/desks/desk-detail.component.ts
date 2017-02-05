@@ -11,24 +11,30 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 import {DeskService} from "./desk.service";
 import {Observable} from "rxjs/Observable";
+import {Card} from "./model/Card";
+import {CardService} from "./card.service";
 
 @Component({
     selector: "bb-desk-detail",
     moduleId: module.id,
-    templateUrl: "html/desk-detail.component.html"
+    templateUrl: "html/desk-detail.component.html",
+    styleUrls: ["css/desk-detail.component.css"]
 })
 export class DeskDetailComponent implements OnInit {
 
-    desk: Desk/* = new Desk(1, "admin", "English")*/;
+    desk: Desk;
+    cards: Card[];
 
     constructor(
         private deskService: DeskService,
+        private cardService: CardService,
         private route: ActivatedRoute
     ) {};
 
     ngOnInit() {
         this.route.params
             .distinctUntilChanged()
+            .do((params: Params) => this.getCards(+params['id']))
             .switchMap((params: Params) => {
                 return this.findDesk(+params['id']);
             })
@@ -39,5 +45,13 @@ export class DeskDetailComponent implements OnInit {
 
     private findDesk(deskId: number): Observable<Desk> {
         return this.deskService.getDesk(deskId);
+    }
+
+    private getCards(deskId: number) {
+        this.cardService.getCardsForDesk(deskId)
+            .subscribe((cards: Card[]) => {
+                console.log(`Cards ${cards}`);
+                this.cards = cards
+            });
     }
 }

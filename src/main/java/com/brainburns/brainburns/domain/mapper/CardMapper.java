@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by arthan on 01.02.2017. | Project brainburns
  */
@@ -26,4 +28,12 @@ public interface CardMapper {
             @Result(property = "id", column = "cardid")
     })
     Card findById(long cardId);
+
+    @Select("SELECT cardid, deskid, writing, transcription, meaning " +
+            "FROM card " +
+            "WHERE deskid=#{deskId}")
+    @Results({
+            @Result(property = "id", column = "cardid")
+    })
+    List<Card> findByDesk(long deskId);
 }
