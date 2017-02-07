@@ -1,7 +1,24 @@
 .bb-list .bb-row {
     display: flex;
+    border-left: 1px solid #999999;
+    border-top: 1px solid #999999;
+}
+.bb-list .bb-row.bb-row-even {
+    background-color: #484848;
 }
 .bb-list .bb-row > span {
     flex-grow: 1;
     flex-basis: 0;
+    border-right: 1px solid #999999;
+    /*border-bottom: 1px solid #999999;*/
+    padding: 7px;
+    font-size: 1.1em;
+}
+.bb-list .bb-row.bb-row-last > span {
+    border-bottom: 1px solid #999999;
+}
+
+.desk-detail > h2 {
+    text-align: center;
+    margin-bottom: 15px;
 }

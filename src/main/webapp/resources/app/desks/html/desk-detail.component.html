@@ -1,8 +1,8 @@
-<div>
-    <h2>Desk Details</h2>
-    for {{desk?.title}}
+<div class="desk-detail">
+    <h2>{{desk?.title}}</h2>
     <div class="bb-list"> <!--Card list-->
-        <div *ngFor="let card of cards" class="bb-row"> <!--Row-->
+        <div *ngFor="let card of cards; let last = last; let even = even;"
+             class="bb-row" [class.bb-row-last]="last" [class.bb-row-even]="even">
             <span>{{card.writing}}</span>
             <span>{{card.transcription}}</span>
             <span>{{card.meaning}}</span>
