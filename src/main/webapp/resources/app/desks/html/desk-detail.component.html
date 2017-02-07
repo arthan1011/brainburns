@@ -1,6 +1,11 @@
 <div class="desk-detail">
     <h2>{{desk?.title}}</h2>
-    <div class="bb-list"> <!--Card list-->
+    <div *ngIf="cards && cards.length" class="bb-list">
+        <div class="bb-row bb-head-row">
+            <span>Writing</span>
+            <span>Transcription</span>
+            <span>Meaning</span>
+        </div>
         <div *ngFor="let card of cards; let last = last; let even = even;"
              class="bb-row" [class.bb-row-last]="last" [class.bb-row-even]="even">
             <span>{{card.writing}}</span>
