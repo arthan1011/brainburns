@@ -42,6 +42,22 @@
 </head>
 
 <body>
-<brainburns-app>Loading AppComponent content here ...</brainburns-app>
+<brainburns-app></brainburns-app>
+<%--Loading Overlay--%>
+<div id="loading-overlay" class="loading">
+    <div class="center-panel">
+        <div class="loading-label">Loading</div>
+        <div class="anim-panel">
+            <div class="vertical dot"></div>
+            <div class="horizontal dot"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.bootstrapping.then(function () {
+        document.getElementById("loading-overlay").className = "";
+    });
+</script>
 </body>
 </html>

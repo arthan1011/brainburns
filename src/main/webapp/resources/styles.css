@@ -116,3 +116,90 @@ fieldset#actions a {
 ::-moz-placeholder { /* Firefox 19+ */
     color: gray;
 }
+
+/*///////////////===================_Loading_Overlay_===+++======================//////////////*/
+
+#loading-overlay {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1E2F2C;
+    z-index: -1;
+}
+#loading-overlay.loading {
+    opacity: 1;
+}
+
+.loading-label {
+    font-size: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: -10px;
+    color: #10A0A0;
+
+    animation: color-change;
+    animation-iteration-count: infinite;
+    animation-duration: 1.8s;
+    animation-timing-function: ease;
+}
+
+.center-panel {
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    margin-top: 20%;
+    margin-left: calc(50% - 150px);
+}
+.anim-panel {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    transform: rotate(45deg);
+}
+.dot {
+    position: absolute;
+    width: 0;
+    border: 10px solid #4d7987;
+    border-radius: 50%;
+
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+.vertical {
+    left: calc(50% - 10px);
+    animation-delay: -1s;
+    animation-name: vertical;
+}
+.horizontal {
+    top: calc(50% - 10px);
+    animation-delay: -0.6s;
+    animation-name: horizontal;
+}
+
+@keyframes color-change {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+@keyframes vertical {
+    from {
+    }
+    to {
+        transform: translateY(calc(100px - 20px))
+    }
+}
+@keyframes horizontal {
+    to {
+        transform: translateX(calc(100px - 20px))
+    }
+}
