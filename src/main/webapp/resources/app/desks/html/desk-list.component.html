@@ -18,8 +18,13 @@
             <!--Moving triangle-->
             <div class="arrow-container">
                 <div class="arrow">
-                    <div class="arrow-tip"></div>
-                    <div class="arrow-base"></div>
+                    <div class="arrow-tip"
+                         [@tip_addNewCard]="cardsStates[desk.id]">
+                    </div>
+                    <div class="arrow-base"
+                         (@addNewCard.done)="onNewCardAnimationDone()"
+                         [@addNewCard]="cardsStates[desk.id]">
+                    </div>
                 </div>
             </div>
         </div>

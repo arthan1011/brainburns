@@ -2,7 +2,10 @@
 * Created by arthan on 17.01.2017.
 */
 
-import {Component, OnInit, EventEmitter, Output, OnDestroy} from "@angular/core";
+import {
+    Component, OnInit, EventEmitter, Output, OnDestroy, trigger, transition, animate,
+    keyframes, style, state
+} from "@angular/core";
 import {Desk} from "./model/Desk";
 import {Router, ActivatedRoute, Params} from "@angular/router";
 import {DeskService} from "./desk.service";
@@ -11,11 +14,51 @@ import {DeskCommunicationService} from "./desk-communication.service";
 import {CardService} from "./card.service";
 import {Card} from "./model/Card";
 
+const NEW_CARD_ANIMATION_DURATION = 1000;
+
 @Component({
     selector: "bb-desk-list",
     moduleId: module.id,
     templateUrl: "html/desk-list.component.html",
-    styleUrls: ["css/desk-list.component.css"]
+    styleUrls: ["css/desk-list.component.css"],
+    animations: [
+        trigger('addNewCard', [
+            transition('idle => adding', [
+                animate(NEW_CARD_ANIMATION_DURATION, keyframes([
+                    style({
+                        "background-color": "#6B5661",
+                        offset: 0
+                    }),
+                    style({
+                        "background-color": "#a1b96c",
+                        offset: 0.1
+                    }),
+                    style({
+                        "background-color": "#6b5661",
+                        offset: 1.0
+                    })
+                ]))
+            ])
+        ]),
+        trigger('tip_addNewCard', [
+            transition('idle => adding', [
+                animate(NEW_CARD_ANIMATION_DURATION, keyframes([
+                    style({
+                        "border-color": "transparent #6B5661 transparent",
+                        offset: 0
+                    }),
+                    style({
+                        "border-color": "transparent #a1b96c transparent",
+                        offset: 0.1
+                    }),
+                    style({
+                        "border-color": "transparent #6B5661 transparent",
+                        offset: 1.0
+                    })
+                ]))
+            ])
+        ])
+    ]
 })
 export class DeskListComponent implements OnInit, OnDestroy {
 
@@ -23,6 +66,7 @@ export class DeskListComponent implements OnInit, OnDestroy {
     public deskListMode: string;
     selectedDesk: Desk;
     public newCards: {[key: string]: number} = {};
+    public cardsStates: {[key: string]: string} = {};
 
     @Output()
     public onNewDesk: EventEmitter<any> = new EventEmitter();
@@ -43,6 +87,11 @@ export class DeskListComponent implements OnInit, OnDestroy {
     };
 
     onCardsAdded(cards: Card[]) {
+        console.log("Changing animation state for selected desk");
+        console.log("Animation states before", this.cardsStates);
+        this.cardsStates[this.selectedDesk.id] = 'adding';
+        console.log("Animation states after", this.cardsStates);
+
         cards.forEach(card => {
             console.log(`Card with id "${card.id}" added to desk #${card.deskId}`);
             if (this.newCards[card.deskId]) {
@@ -69,7 +118,16 @@ export class DeskListComponent implements OnInit, OnDestroy {
     private updateDesks() {
         console.log("Updating desks...");
         this.deskService.getDesks()
-            .subscribe(desks => this.desks = desks);
+            .subscribe(desks => {
+                this.desks = desks;
+                this.setIdleAnimationState();
+            });
+    }
+
+    private setIdleAnimationState() {
+        this.desks.forEach((desk) => {
+            this.cardsStates[desk.id] = 'idle'
+        });
     }
 
     newDesk() {
@@ -92,5 +150,12 @@ export class DeskListComponent implements OnInit, OnDestroy {
 
     isSelected(desk: Desk): boolean {
         return this.selectedDesk && this.selectedDesk.id === desk.id;
+    }
+
+    onNewCardAnimationDone() {
+        console.log("Animation done", this.cardsStates);
+        if (this.selectedDesk) {
+            this.cardsStates[this.selectedDesk.id] = "idle";
+        }
     }
 }

@@ -3,11 +3,14 @@
     */
 
 export class Desk {
+    animationState: string;
 
     constructor(
         public id?: number,
         public username?: string,
         public title?: string
-    ) {}
+    ) {
+        this.animationState = 'idle';
+    }
 
 }
