@@ -75,6 +75,7 @@ task my_npm_install(type: NpmTask) {
 
 node {
     download = true
+    version = '6.9.3'
     workDir = file("${project.buildDir}/nodejs")
 //    nodeModulesDir = file("${webAppDirName}/resources/node_modules")
 }
