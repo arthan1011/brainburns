@@ -18,7 +18,7 @@ const appRoutes: Routes = [
         component: DashboardComponent
     },
     {
-        path: 'desks',
+        path: 'desks/desk',
         component: DesksComponent
     }
 ];

@@ -15,7 +15,7 @@ const appRoutes = [
         component: DesksComponent,
         children: [
             {
-                path: "new",
+                path: "desk/new",
                 component: DeskNewFormComponent
             },
             {
@@ -23,7 +23,7 @@ const appRoutes = [
                 component: CardFormComponent
             },
             {
-                path: ":id",
+                path: "desk/:id",
                 component: DeskDetailComponent
             }
 

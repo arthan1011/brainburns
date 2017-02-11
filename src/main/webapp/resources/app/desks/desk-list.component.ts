@@ -142,7 +142,7 @@ export class DeskListComponent implements OnInit, OnDestroy {
             console.log(`Desk #${this.selectedDesk.id} "${this.selectedDesk.title}" selected`);
             this.cardService.selectDesk(desk);
         } else {
-            this.router.navigate(["/desks", desk.id]);
+            this.router.navigate(["/desks/desk", desk.id]);
         }
     }
 

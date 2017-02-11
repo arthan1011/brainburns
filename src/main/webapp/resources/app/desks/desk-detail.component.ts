@@ -50,7 +50,6 @@ export class DeskDetailComponent implements OnInit {
     private getCards(deskId: number) {
         this.cardService.getCardsForDesk(deskId)
             .subscribe((cards: Card[]) => {
-                console.log(`Cards ${cards}`);
                 this.cards = cards
             });
     }

@@ -26,7 +26,7 @@ export class DesksComponent implements OnDestroy {
     };
 
     toNewDeskForm() {
-        this.router.navigate(["/desks/new"]);
+        this.router.navigate(["/desks/desk/new"]);
     }
 
     onNewDeskCreated(status: string) {

@@ -42,3 +42,10 @@ nav .nav-link:hover {
     transition-duration: 400ms;
     color: antiquewhite;
 }
+
+nav a.active > .nav-link {
+    transition-property: none;
+    transform: translate(-8px, 0px);
+    color: #a1b96c;
+    background-color: #7C726B;
+}
