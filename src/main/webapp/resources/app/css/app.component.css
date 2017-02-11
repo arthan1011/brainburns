@@ -49,3 +49,16 @@ nav a.active > .nav-link {
     color: #a1b96c;
     background-color: #7C726B;
 }
+
+.main-footer {
+    height: 45px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-top: 15px;
+    text-align: center;
+    font-size: small;
+    background-color: #404040;
+    color: #999;
+}
