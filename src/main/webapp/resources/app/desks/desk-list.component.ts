@@ -72,6 +72,7 @@ export class DeskListComponent implements OnInit, OnDestroy {
     public onNewDesk: EventEmitter<any> = new EventEmitter();
 
     private updateDesksSub: Subscription;
+    private addCardsSub: Subscription;
 
     constructor(
         private deskService: DeskService,
@@ -82,8 +83,8 @@ export class DeskListComponent implements OnInit, OnDestroy {
     ) {
         this.updateDesksSub = deskCommunicationService.deskListUpdate$
             .subscribe(() => this.updateDesks());
-        this.cardService.addedCards$
-            .subscribe(this.onCardsAdded.bind(this))
+        this.addCardsSub = this.cardService.addedCards$
+            .subscribe((cards: Card[]) => this.onCardsAdded(cards))
     };
 
     onCardsAdded(cards: Card[]) {
@@ -113,6 +114,7 @@ export class DeskListComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.updateDesksSub.unsubscribe();
+        this.addCardsSub.unsubscribe();
     }
 
     private updateDesks() {
@@ -136,8 +138,8 @@ export class DeskListComponent implements OnInit, OnDestroy {
 
     selectDesk(desk: Desk): void {
         if (this.isSelectMode()) {
-            console.log(`Desk #${desk.id} "${desk.title}" selected`);
             this.selectedDesk = desk;
+            console.log(`Desk #${this.selectedDesk.id} "${this.selectedDesk.title}" selected`);
             this.cardService.selectDesk(desk);
         } else {
             this.router.navigate(["/desks", desk.id]);
