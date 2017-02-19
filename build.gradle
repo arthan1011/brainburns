@@ -127,3 +127,11 @@ task wrapper(type: Wrapper) {
 processResources.dependsOn {
     [my_npm_install, myCompileTypeScript]
 }
+
+task karmaTest(type: Exec) {
+    workingDir "${webAppDirName}/resources"
+    commandLine 'cmd', '/c', 'npm test'
+}
+karmaTest.dependsOn {
+    [myCompileTypeScript]
+}
