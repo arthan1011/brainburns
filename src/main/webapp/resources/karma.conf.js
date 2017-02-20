@@ -5,7 +5,7 @@
 module.exports = function (config) {
     config.set({
         basePath: '',
-        frameworks: ['systemjs', 'jasmine'],
+        frameworks: ['jasmine'],
 
         browsers: ['Chrome'],
 
@@ -23,17 +23,19 @@ module.exports = function (config) {
             {pattern: 'app/**/*.js.map', included: false, watcher: false},
             {pattern: 'app/**/*.html', included: false, watcher: false},
             {pattern: 'app/**/*.css', included: false, watcher: false},
-            { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false },
-            { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
+            {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
+            {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
+            {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false},
+            {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false},
 
             'app/first-test.spec.js',
-            'app/app.component.spec.js'
+            { pattern: 'app/counter/counter.js', included: false, watched: true },
+            // 'app/app.component.spec.js'
         ],
 
         // Karma plugins loaded
         plugins: [
             'karma-jasmine',
-            'karma-systemjs',
             'karma-chrome-launcher'
         ],
 
