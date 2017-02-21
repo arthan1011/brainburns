@@ -42,7 +42,7 @@
     }
   });
 
-    global.bootstrapping = System
+    /*global.bootstrapping = System
         .import( "app" )
         .then(
             function handleResolve() {
@@ -53,5 +53,5 @@
                 console.error( error );
                 return( Promise.reject( error ) );
             }
-        );
+        );*/
 })(this);

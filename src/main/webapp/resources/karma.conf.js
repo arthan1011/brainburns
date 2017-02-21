@@ -10,34 +10,44 @@ module.exports = function (config) {
         browsers: ['Chrome'],
 
         files: [
-            {pattern: 'systemjs.config.js', included: false, watcher: false},
-
             'node_modules/systemjs/dist/system.src.js',
+            {pattern: 'systemjs.config.js', included: false, watcher: false},
             'karma-test-shim.js',
 
-            'node_modules/core-js/client/shim.min.js',
+            // Polyfills
+            'node_modules/core-js/client/shim.js',
             'node_modules/reflect-metadata/Reflect.js',
-            'node_modules/zone.js/dist/zone.js',
 
-            {pattern: 'app/**/*.js', included: false, watcher: false},
-            {pattern: 'app/**/*.js.map', included: false, watcher: false},
-            {pattern: 'app/**/*.html', included: false, watcher: false},
-            {pattern: 'app/**/*.css', included: false, watcher: false},
+            // zone.js
+            'node_modules/zone.js/dist/zone.js',
+            'node_modules/zone.js/dist/long-stack-trace-zone.js',
+            'node_modules/zone.js/dist/proxy.js',
+            'node_modules/zone.js/dist/sync-test.js',
+            'node_modules/zone.js/dist/jasmine-patch.js',
+            'node_modules/zone.js/dist/async-test.js',
+            'node_modules/zone.js/dist/fake-async-test.js',
+
             {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
             {pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false},
+
             {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false},
             {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false},
 
-            'app/first-test.spec.js',
-            { pattern: 'app/counter/counter.js', included: false, watched: true },
-            // 'app/app.component.spec.js'
+            { pattern: 'app/**/*.js', included: false, watched: true },
+            { pattern: 'app/**/*.ts', included: false, watched: true },
+            { pattern: 'app/**/*.js.map', included: false, watched: true },
+            { pattern: 'app/**/*.html', included: false, watched: true },
+            { pattern: 'app/**/*.css', included: false, watched: true }
         ],
 
         // Karma plugins loaded
         plugins: [
             'karma-jasmine',
-            'karma-chrome-launcher'
+            'karma-chrome-launcher',
+            'karma-jasmine-html-reporter'
         ],
+
+        reporters: ['progress', 'kjhtml'],
 
         logLevel: config.LOG_DEBUG,
 
