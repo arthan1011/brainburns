@@ -10,14 +10,14 @@ module.exports = function (config) {
         browsers: ['Chrome'],
 
         files: [
+            {pattern: 'systemjs.config.js', included: false, watcher: false},
+
+            'node_modules/systemjs/dist/system.src.js',
+            'karma-test-shim.js',
+
             'node_modules/core-js/client/shim.min.js',
             'node_modules/reflect-metadata/Reflect.js',
             'node_modules/zone.js/dist/zone.js',
-            'node_modules/systemjs/dist/system.src.js',
-
-            {pattern: 'systemjs.config.js', included: false, watcher: false},
-
-            'karma-test-shim.js',
 
             {pattern: 'app/**/*.js', included: false, watcher: false},
             {pattern: 'app/**/*.js.map', included: false, watcher: false},

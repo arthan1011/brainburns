@@ -2,6 +2,7 @@
  * Created by arthan on 18.02.2017.
 */
 
+import {APP_BASE_HREF} from '@angular/common';
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
 import {DebugElement} from "@angular/core";
@@ -15,7 +16,8 @@ describe('AppComponent template', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [AppComponent]
+            declarations: [AppComponent],
+            providers: [{provide: APP_BASE_HREF, useValue : '/' }]
         });
 
         fixture = TestBed.createComponent(AppComponent);

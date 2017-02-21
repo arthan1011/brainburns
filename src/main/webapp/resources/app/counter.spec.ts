@@ -22,4 +22,4 @@ describe('Counter', () => {
 			done();
 		});
   });
-})
+});
