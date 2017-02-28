@@ -68,13 +68,7 @@ public class CardControllerTest {
         String inputJson = mapper.writeValueAsString(inputCard);
 
         new Expectations() {{
-            cardService.saveCard("admin", with(new Delegate<Card>() {
-                public boolean check(Card card) {
-                    return card.getWriting().equals(inputCard.getWriting()) &&
-                            card.getDeskId() == inputCard.getDeskId() &&
-                            card.getMeaning().equals(inputCard.getMeaning());
-                }
-            })); result = inputCard;
+            cardService.saveCard("admin", (Card) any); result = inputCard;
         }};
 
         mockMvc.perform(
@@ -82,7 +76,7 @@ public class CardControllerTest {
                         .post("/api/card")
                         .accept(MediaType.APPLICATION_JSON_UTF8_VALUE)
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        // todo: Используем существующих юзеров, надо будет тестовую конфигуркцию SpringSecurity
+                        // todo: Use created users, there should be test config for SpringSecurity
                         .with(SecurityMockMvcRequestPostProcessors.user("admin").password("admin"))
                 .content(inputJson))
                 .andExpect(status().isOk())

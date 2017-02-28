@@ -31,16 +31,22 @@ public class DeskService {
         return deskMapper.findByUsername(username);
     }
 
+    /**
+     * Creates new desk for user
+     *
+     * @param desk desk with username set
+     * @return created desk id
+     */
     public long createDesk(Desk desk) {
-        List<Desk> userDesks = deskMapper.findByUsername(desk.getUsername());
-
-        boolean userHasDeskWithTheSameName = userDesks.stream()
-                .anyMatch(item -> item.getTitle().equals(desk.getTitle()));
-        if (userHasDeskWithTheSameName) {
-            // TODO: Raise exception here, no return
-            return -1;
-        } else {
-            return deskMapper.createDesk(desk);
+        if (deskTitleExists(desk)) {
+            throw new DuplicateDeskTitleException("Desk with name '" + desk.getTitle() + "' already exists.");
         }
+        return deskMapper.createDesk(desk);
+    }
+
+    private boolean deskTitleExists(Desk desk) {
+        List<Desk> userDesks = deskMapper.findByUsername(desk.getUsername());
+        return userDesks.stream()
+                .anyMatch(item -> item.getTitle().equals(desk.getTitle()));
     }
 }
