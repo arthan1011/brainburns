@@ -32,5 +32,6 @@ export class DeskNewFormComponent {
                 () => this.deskCommunicationService.deskCreated("success"),
                 (error: Response) => this.notificationService.error(error.json().message)
             );
+        this.desk = new Desk();
     }
 }
