@@ -1,0 +1,39 @@
+div.top-popup-container {
+
+}
+div.top-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 100px;
+    background-color: crimson;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    text-align: center;
+    animation: popup 6s;
+    position: fixed;
+    width: 400px;
+    top: 0;
+    left: calc(50% - 200px);
+}
+
+@keyframes popup {
+    0% {
+        top: -100px;
+        background-color: lightyellow;
+    }
+    8% {
+        top: 0;
+        background-color: #e00101;
+    }
+    50% {
+        opacity: 1;
+        top: 0;
+    }
+    100% {
+        opacity: 0;
+        top: 0;
+    }
+}

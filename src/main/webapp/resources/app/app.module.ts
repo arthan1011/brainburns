@@ -5,6 +5,8 @@ import {AppComponent} from "./app.component";
 import {DashboardComponent} from "./dashboard.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {DesksModule} from "./desks/desks.module";
+import {NotificationService} from "./notification.service";
+import {NotificationPopupComponent} from "./notification.component";
 
 @NgModule({
     imports: [
@@ -15,10 +17,14 @@ import {DesksModule} from "./desks/desks.module";
     ],
     declarations: [
         AppComponent,
-        DashboardComponent
+        DashboardComponent,
+        NotificationPopupComponent
     ],
     bootstrap: [
         AppComponent
+    ],
+    providers: [
+        NotificationService
     ]
 })
 export class AppModule {

@@ -6,6 +6,8 @@ import {Component} from "@angular/core";
 import {Desk} from "./model/Desk";
 import {DeskService} from "./desk.service";
 import {DeskCommunicationService} from "./desk-communication.service";
+import {Response} from "@angular/http";
+import {NotificationService} from "../notification.service";
 
 @Component({
     moduleId: module.id,
@@ -21,10 +23,14 @@ export class DeskNewFormComponent {
     constructor(
         private deskService: DeskService,
         private deskCommunicationService: DeskCommunicationService,
+        private notificationService: NotificationService
     ) {}
 
     addDesk() {
         this.deskService.createDesk(this.desk)
-            .subscribe(() => this.deskCommunicationService.deskCreated("success"));
+            .subscribe(
+                () => this.deskCommunicationService.deskCreated("success"),
+                (error: Response) => this.notificationService.error(error.json().message)
+            );
     }
 }
