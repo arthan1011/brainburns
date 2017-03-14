@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <users username="first_test_user" password="first_test_user" />
+    <users username="second_test_user" password="second_test_user" />
+    <desk username="second_test_user" title="Default" />
+</dataset>

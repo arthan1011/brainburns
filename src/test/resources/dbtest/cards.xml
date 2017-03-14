@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <desk deskid="11" username="arthan" title="English" />
-    <desk deskid="12" username="arthan" title="Simple" />
-
-    <card deskid="11" writing="Progress" meaning="Прогресс" />
+    <desk deskid="11" username="test_user" title="Test_desk" />
 </dataset>

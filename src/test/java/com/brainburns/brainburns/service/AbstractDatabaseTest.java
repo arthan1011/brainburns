@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+import org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
@@ -22,6 +25,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 )
 @TestExecutionListeners({
         DependencyInjectionTestExecutionListener.class,
+        SqlScriptsTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
 @DatabaseTearDown(type = DatabaseOperation.DELETE_ALL)

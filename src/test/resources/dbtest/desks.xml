@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <desk username="admin" title="Fst" />
-    <desk username="admin" title="Scd" />
-    <desk username="arthan" title="English" />
+    <desk username="test_user" title="First" />
+    <desk username="test_user" title="Second" />
+    <desk username="test_admin" title="First" />
 </dataset>
