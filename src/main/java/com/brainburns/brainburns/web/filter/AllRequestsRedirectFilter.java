@@ -26,7 +26,8 @@ public class AllRequestsRedirectFilter implements Filter {
         if (isResourceUrl || isLoginUrl || isApiUrl) {
             chain.doFilter(request, response);
         } else {
-            request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+            // todo: I don't know why "/main.html" work but "/main" doesn't:
+            request.getRequestDispatcher("/main.html").forward(request, response);
         }
     }
 
