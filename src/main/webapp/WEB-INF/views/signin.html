@@ -19,8 +19,8 @@
                 <input id="password" name="password" type="password" placeholder="Password" required>
             </div>
         </fieldset>
-        <h2 th:if="${param.error}">Incorrect Username or Password</h2>
-        <h2 th:if="${param.userCreated}">You created a new user</h2>
+        <h2 class="errorMessage" th:if="${param.error}">Incorrect Username or Password</h2>
+        <h2 class="infoMessage" th:if="${param.userCreated}">You created a new user</h2>
         <fieldset id="actions">
             <button type="submit" name="submit" id="submit" value="Sign In">Login</button>
             <div>
